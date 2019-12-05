@@ -1,0 +1,6 @@
+framework module Pods_JStore_JStoreUITests {
+  umbrella header "Pods-JStore-JStoreUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

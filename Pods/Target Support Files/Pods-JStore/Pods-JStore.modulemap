@@ -1,0 +1,6 @@
+framework module Pods_JStore {
+  umbrella header "Pods-JStore-umbrella.h"
+
+  export *
+  module * { export * }
+}
