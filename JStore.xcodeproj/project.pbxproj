@@ -12,8 +12,8 @@
 		F12F02E9F4C8FE1BC973CB96 /* Pods_JStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
 		FC68916723994BF4004B41F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916623994BF4004B41F9 /* SceneDelegate.swift */; };
-		FC68916923994BF4004B41F9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* FirstViewController.swift */; };
-		FC68916B23994BF4004B41F9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SecondViewController.swift */; };
+		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
+		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
 		FC68916E23994BF4004B41F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC68916C23994BF4004B41F9 /* Main.storyboard */; };
 		FC68917023994BF5004B41F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC68916F23994BF5004B41F9 /* Assets.xcassets */; };
 		FC68917323994BF5004B41F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC68917123994BF5004B41F9 /* LaunchScreen.storyboard */; };
@@ -22,6 +22,7 @@
 		FC68919B2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
 		FC68919C2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
 		FC68919D2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
+		FCB84C022399889F00124005 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB84C012399889F00124005 /* MeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +55,8 @@
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC68916623994BF4004B41F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FC68916823994BF4004B41F9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		FC68916A23994BF4004B41F9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		FC68916A23994BF4004B41F9 /* SellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellViewController.swift; sourceTree = "<group>"; };
 		FC68916D23994BF4004B41F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC68916F23994BF5004B41F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC68917223994BF5004B41F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		FC68918823994BF6004B41F9 /* JStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JStoreUITests.swift; sourceTree = "<group>"; };
 		FC68918A23994BF6004B41F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC68919A2399641F004B41F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +149,9 @@
 			children = (
 				FC68916423994BF4004B41F9 /* AppDelegate.swift */,
 				FC68916623994BF4004B41F9 /* SceneDelegate.swift */,
-				FC68916823994BF4004B41F9 /* FirstViewController.swift */,
-				FC68916A23994BF4004B41F9 /* SecondViewController.swift */,
+				FC68916823994BF4004B41F9 /* BuyViewController.swift */,
+				FC68916A23994BF4004B41F9 /* SellViewController.swift */,
+				FCB84C012399889F00124005 /* MeViewController.swift */,
 				FC68916C23994BF4004B41F9 /* Main.storyboard */,
 				FC68916F23994BF5004B41F9 /* Assets.xcassets */,
 				FC68917123994BF5004B41F9 /* LaunchScreen.storyboard */,
@@ -437,8 +440,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC68916B23994BF4004B41F9 /* SecondViewController.swift in Sources */,
-				FC68916923994BF4004B41F9 /* FirstViewController.swift in Sources */,
+				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
+				FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */,
+				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
 				FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */,
 				FC68916723994BF4004B41F9 /* SceneDelegate.swift in Sources */,
 			);
