@@ -8,12 +8,16 @@
 
 import UIKit
 
+
 class BuyViewController: UIViewController {
+    
+    let TAG = "BuyViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
 
 
 }
