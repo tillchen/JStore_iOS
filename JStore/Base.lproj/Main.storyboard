@@ -86,9 +86,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jstore_icon" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-za-S2q">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JStore: A Marketplace for  Jacobs University Bremen" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-4Y-g2a">
-                                <rect key="frame" x="94" y="228" width="226.5" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="78" y="228" width="258.5" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -96,7 +99,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="184" id="NEd-vK-DxX"/>
+                            <constraint firstItem="f0y-za-S2q" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="87" id="WUC-RZ-uyp"/>
+                            <constraint firstItem="f0y-za-S2q" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="340" id="Zn1-xo-cxh"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="350" id="fUz-UW-BHp"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="sug-CG-bMO" secondAttribute="centerX" id="tHi-6L-n3W"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="f0y-za-S2q" secondAttribute="trailing" constant="87" id="v81-Ml-3Le"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="poL-tW-Tig"/>
                     </view>
@@ -109,6 +116,7 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="arrow.up" catalog="system" width="60" height="64"/>
+        <image name="jstore_icon" width="1024" height="1024"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
     </resources>
