@@ -80,28 +80,57 @@
         <!--JStore-->
         <scene sceneID="enQ-Lr-Lqx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dK8-aq-Hde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="5vG-Hj-Aum" customClass="LoginViewController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sug-CG-bMO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jstore_icon" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-za-S2q">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JStore: A Marketplace for  Jacobs University Bremen" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-4Y-g2a">
                                 <rect key="frame" x="78" y="228" width="258.5" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jstore_icon" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-za-S2q">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="FZH-TN-hxx"/>
+                                    <constraint firstAttribute="width" constant="240" id="L1Q-eA-K5s"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="VWU-2V-FbV"/>
+                                    <constraint firstAttribute="width" secondItem="f0y-za-S2q" secondAttribute="height" multiplier="15:8" id="eI8-iC-uca"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6zf-Bf-HgA">
+                                <rect key="frame" x="20" y="749" width="169" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5vG-Hj-Aum" id="akj-W0-At1"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@jacobs-university.de" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dG-D5-xMU">
+                                <rect key="frame" x="200" y="753" width="193.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="poL-tW-Tig" secondAttribute="centerX" id="5bp-Bz-u1h"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="184" id="NEd-vK-DxX"/>
+                            <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="poL-tW-Tig" secondAttribute="centerX" id="S8a-OY-2kI"/>
                             <constraint firstItem="f0y-za-S2q" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="87" id="WUC-RZ-uyp"/>
+                            <constraint firstItem="6zf-Bf-HgA" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="Wdh-Pf-0fG"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="225" id="Xhk-8O-xcN"/>
+                            <constraint firstItem="6zf-Bf-HgA" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="705" id="ZKb-79-Qb8"/>
                             <constraint firstItem="f0y-za-S2q" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="340" id="Zn1-xo-cxh"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="5dG-D5-xMU" secondAttribute="bottom" constant="85" id="aOq-ZA-yMb"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="350" id="fUz-UW-BHp"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="6zf-Bf-HgA" secondAttribute="bottom" constant="79" id="hgD-aJ-40l"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="5dG-D5-xMU" secondAttribute="trailing" constant="20.5" id="mgw-xC-9td"/>
+                            <constraint firstItem="5dG-D5-xMU" firstAttribute="top" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="241" id="opk-hK-Bcz"/>
+                            <constraint firstItem="5dG-D5-xMU" firstAttribute="leading" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="11" id="roj-Et-UUf"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="sug-CG-bMO" secondAttribute="centerX" id="tHi-6L-n3W"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="f0y-za-S2q" secondAttribute="trailing" constant="87" id="v81-Ml-3Le"/>
                         </constraints>
@@ -109,8 +138,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="JStore" id="ypq-mc-02l"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dK8-aq-Hde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="-232"/>
+            <point key="canvasLocation" x="1031.8840579710145" y="-232.36607142857142"/>
         </scene>
     </scenes>
     <resources>

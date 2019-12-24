@@ -29,3 +29,15 @@ class LoginViewController: UIViewController {
     */
 
 }
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // dismiss the keyboard when pressing return
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { // dismiss the keyboard when touching
+        super.touchesEnded(touches, with: event)
+        view.endEditing(true)
+    }
+}
