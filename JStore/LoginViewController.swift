@@ -10,14 +10,35 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    let TAG = "LoginViewController"
 
+    @IBOutlet var textView: UITextView!
+    
+    @IBOutlet var textView2: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setHyperLink()
 
-        // Do any additional setup after loading the view.
+    }
+
+    func setHyperLink() {
+        let attributedString1 = NSMutableAttributedString(string: "Made with ❤️ by Tianyao Chen and Taiyr Begeyev")
+        attributedString1.addAttribute(.link, value: "mailto:tillchen417@gmail.com", range: NSRange(location: 15, length: 13))
+        attributedString1.addAttribute(.link, value: "mailto:taiyrbegeyev@gmail.com", range: NSRange(location: 32, length: 14))
+        textView.attributedText = attributedString1
+        textView.textColor = .lightGray
+        textView.font = UIFont.systemFont(ofSize: 11.0)
+        
+        let attributedString2 = NSMutableAttributedString(string: "By signing in, you agree to our Terms and Conditions and Privacy Policy")
+        attributedString2.addAttribute(.link, value: "https://jstore.xyz/terms_and_conditions", range: NSRange(location: 32, length: 20))
+        attributedString2.addAttribute(.link, value: "https://jstore.xyz/privacy_policy", range: NSRange(location: 57, length: 14))
+        textView2.attributedText = attributedString2
+        textView2.textColor = .lightGray
+        textView2.font = UIFont.systemFont(ofSize: 10.0)
     }
     
-
     /*
     // MARK: - Navigation
 
