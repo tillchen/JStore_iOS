@@ -111,6 +111,9 @@
                                 <rect key="frame" x="20" y="585" width="186" height="35"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Send Link"/>
+                                <connections>
+                                    <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="rxY-Ry-eGn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@jacobs-university.de" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dG-D5-xMU">
                                 <rect key="frame" x="210" y="522" width="193.5" height="23"/>
@@ -122,6 +125,9 @@
                                 <rect key="frame" x="214" y="585" width="189" height="35"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign In Anonymously"/>
+                                <connections>
+                                    <action selector="onAnonymousClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="3c4-Kf-iRd"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Placeholder" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aFZ-sO-GFV">
                                 <rect key="frame" x="20" y="638" width="383" height="30"/>
@@ -178,6 +184,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="JStore" id="ypq-mc-02l"/>
                     <connections>
+                        <outlet property="anonymousButton" destination="KHy-f8-dmx" id="1iU-K3-4so"/>
+                        <outlet property="sendLinkButton" destination="pmI-nU-E9C" id="H8T-xC-N4u"/>
+                        <outlet property="textField" destination="6zf-Bf-HgA" id="cKW-go-qwJ"/>
                         <outlet property="textView" destination="aFZ-sO-GFV" id="PN3-hx-eiQ"/>
                         <outlet property="textView2" destination="wfR-hq-VoW" id="6u4-Sh-Ttf"/>
                     </connections>
