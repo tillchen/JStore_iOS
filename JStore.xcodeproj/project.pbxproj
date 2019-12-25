@@ -72,6 +72,7 @@
 		FC68919A2399641F004B41F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC69D87123B125F10008610A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FC69D87323B15AD60008610A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JStore.entitlements; sourceTree = "<group>"; };
 		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +152,7 @@
 		FC68916323994BF3004B41F9 /* JStore */ = {
 			isa = PBXGroup;
 			children = (
+				FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */,
 				FC68916423994BF4004B41F9 /* AppDelegate.swift */,
 				FC68916623994BF4004B41F9 /* SceneDelegate.swift */,
 				FC68916823994BF4004B41F9 /* BuyViewController.swift */,
@@ -626,6 +628,8 @@
 			baseConfigurationReference = 7636998BAF9B0B7DD295AC50 /* Pods-JStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
+				CODE_SIGN_ENTITLEMENTS = JStore/JStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KK8NHCY4ZG;
 				INFOPLIST_FILE = JStore/Info.plist;
@@ -633,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tillchen.JStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tillchen.jstore.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,6 +649,8 @@
 			baseConfigurationReference = 5BF4A15BB35EB35A8F7A8CC2 /* Pods-JStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
+				CODE_SIGN_ENTITLEMENTS = JStore/JStore.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KK8NHCY4ZG;
 				INFOPLIST_FILE = JStore/Info.plist;
@@ -652,7 +658,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tillchen.JStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tillchen.jstore.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

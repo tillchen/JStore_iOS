@@ -57,11 +57,11 @@ class LoginViewController: UIViewController {
         
         activityIndicator.startAnimating()
         Auth.auth().sendSignInLink(toEmail: mEmail, actionCodeSettings: actionCodeSettings) { error in
+            self.activityIndicator.stopAnimating()
             if error != nil {
                 self.showAlert("Some error occurred. Please try again.")
                 return
             }
-            self.activityIndicator.stopAnimating()
             UserDefaults.standard.set(self.mEmail, forKey: "Email")
             self.showAlert("Link sent! Please check your email.")
         }
