@@ -145,6 +145,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="744-ds-7y9">
+                                <rect key="frame" x="197" y="720" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -161,16 +164,20 @@
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="5dG-D5-xMU" secondAttribute="bottom" constant="317" id="JGi-Wh-eJo"/>
                             <constraint firstItem="5dG-D5-xMU" firstAttribute="leading" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="1" id="KW7-Qv-DJ4"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="KHy-f8-dmx" secondAttribute="bottom" constant="242" id="MCi-AI-soR"/>
+                            <constraint firstItem="744-ds-7y9" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="197" id="O5z-xF-OHk"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="KHy-f8-dmx" secondAttribute="trailing" constant="11" id="QEU-P6-A9N"/>
                             <constraint firstItem="KHy-f8-dmx" firstAttribute="top" secondItem="5dG-D5-xMU" secondAttribute="bottom" constant="40" id="RoX-GX-7JG"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="poL-tW-Tig" secondAttribute="centerX" id="S8a-OY-2kI"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="744-ds-7y9" secondAttribute="trailing" constant="197" id="Szs-YF-a4N"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="pmI-nU-E9C" secondAttribute="trailing" constant="208" id="Tv8-EE-iqz"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="205" id="VrK-G8-MHz"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="5dG-D5-xMU" secondAttribute="trailing" constant="10.5" id="W5X-Pt-Xxf"/>
                             <constraint firstItem="pmI-nU-E9C" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="X3Q-ff-nOV"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="f0y-za-S2q" secondAttribute="trailing" constant="87" id="Ygm-4e-hac"/>
                             <constraint firstItem="wfR-hq-VoW" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="YuS-FT-Lo2"/>
+                            <constraint firstItem="744-ds-7y9" firstAttribute="top" secondItem="wfR-hq-VoW" secondAttribute="bottom" constant="8" id="bXg-yX-DYk"/>
                             <constraint firstItem="KHy-f8-dmx" firstAttribute="leading" secondItem="pmI-nU-E9C" secondAttribute="trailing" constant="8" id="cWU-Qs-6VL"/>
+                            <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="744-ds-7y9" secondAttribute="bottom" constant="122" id="cwM-0k-7ZN"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="aFZ-sO-GFV" secondAttribute="bottom" constant="194" id="dxZ-6w-qAb"/>
                             <constraint firstItem="f0y-za-S2q" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="87" id="lv9-5F-FSX"/>
                             <constraint firstItem="wfR-hq-VoW" firstAttribute="top" secondItem="pmI-nU-E9C" secondAttribute="bottom" constant="47" id="nuS-5k-c8F"/>
@@ -184,6 +191,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="JStore" id="ypq-mc-02l"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="744-ds-7y9" id="6FA-Bi-SZ3"/>
                         <outlet property="anonymousButton" destination="KHy-f8-dmx" id="1iU-K3-4so"/>
                         <outlet property="sendLinkButton" destination="pmI-nU-E9C" id="H8T-xC-N4u"/>
                         <outlet property="textField" destination="6zf-Bf-HgA" id="cKW-go-qwJ"/>

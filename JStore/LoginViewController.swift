@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var sendLinkButton: UIButton!
     @IBOutlet var anonymousButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var mUsername: String = ""
     var mValidUsername: Bool = false
@@ -35,11 +37,34 @@ class LoginViewController: UIViewController {
         
         handleUsername()
         
+        if mValidUsername {
+            sendEmail()
+        }
+        
     }
     
     
     @IBAction func onAnonymousClicked(_ sender: Any) {
         
+    }
+    
+    func sendEmail() {
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://jstore.xyz")
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+        actionCodeSettings.setAndroidPackageName("com.tillchen.jstore", installIfNotAvailable: true, minimumVersion: nil)
+        
+        activityIndicator.startAnimating()
+        Auth.auth().sendSignInLink(toEmail: mEmail, actionCodeSettings: actionCodeSettings) { error in
+            if error != nil {
+                self.showAlert("Some error occurred. Please try again.")
+                return
+            }
+            self.activityIndicator.stopAnimating()
+            UserDefaults.standard.set(self.mEmail, forKey: "Email")
+            self.showAlert("Link sent! Please check your email.")
+        }
     }
     
     func handleUsername() {
@@ -49,13 +74,13 @@ class LoginViewController: UIViewController {
             mValidUsername = false
             return
         }
-        if (mUsername == ADMIN) { // admin mode
+        if mUsername == ADMIN { // admin mode
             mEmail = mUsername;
             mValidUsername = true
             return
         }
         if mUsername.contains(" ") || mUsername.contains("@") {
-            showAlert("You Jacobs username must contain no space and no @, (e.g. tichen).")
+            showAlert("Your Jacobs username must contain a dot, no space, and no @, (e.g. ti.chen)")
             mValidUsername = false
         }
         else {
