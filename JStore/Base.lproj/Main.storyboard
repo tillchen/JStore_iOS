@@ -163,22 +163,12 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="744-ds-7y9">
                                 <rect key="frame" x="197" y="720" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKi-CT-rRQ">
-                                <rect key="frame" x="20" y="585" width="186" height="35"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Sign In"/>
-                                <connections>
-                                    <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="PrA-ma-nE1"/>
-                                    <action selector="onSignInClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="lUd-bP-lkJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="pmI-nU-E9C" firstAttribute="top" secondItem="6zf-Bf-HgA" secondAttribute="bottom" constant="35" id="1fJ-J5-Gg4"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="39" id="5Cd-Mv-BOS"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="poL-tW-Tig" secondAttribute="centerX" id="5bp-Bz-u1h"/>
-                            <constraint firstItem="eKi-CT-rRQ" firstAttribute="top" secondItem="6zf-Bf-HgA" secondAttribute="bottom" constant="35" id="6c3-4P-nyP"/>
                             <constraint firstItem="f0y-za-S2q" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="236" id="743-3J-Ips"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="wfR-hq-VoW" secondAttribute="trailing" constant="11" id="7oQ-if-oQ4"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="wfR-hq-VoW" secondAttribute="bottom" constant="150" id="7yN-Er-d7G"/>
@@ -187,7 +177,6 @@
                             <constraint firstItem="5dG-D5-xMU" firstAttribute="top" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="114" id="C69-MD-d8A"/>
                             <constraint firstItem="aFZ-sO-GFV" firstAttribute="top" secondItem="pmI-nU-E9C" secondAttribute="bottom" constant="18" id="D5u-ii-tVe"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="5dG-D5-xMU" secondAttribute="bottom" constant="317" id="JGi-Wh-eJo"/>
-                            <constraint firstItem="eKi-CT-rRQ" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="JNc-PE-c0d"/>
                             <constraint firstItem="5dG-D5-xMU" firstAttribute="leading" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="1" id="KW7-Qv-DJ4"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="KHy-f8-dmx" secondAttribute="bottom" constant="242" id="MCi-AI-soR"/>
                             <constraint firstItem="744-ds-7y9" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="197" id="O5z-xF-OHk"/>
@@ -198,7 +187,6 @@
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="pmI-nU-E9C" secondAttribute="trailing" constant="208" id="Tv8-EE-iqz"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="205" id="VrK-G8-MHz"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="5dG-D5-xMU" secondAttribute="trailing" constant="10.5" id="W5X-Pt-Xxf"/>
-                            <constraint firstItem="aFZ-sO-GFV" firstAttribute="top" secondItem="eKi-CT-rRQ" secondAttribute="bottom" constant="18" id="X0I-jf-GQ3"/>
                             <constraint firstItem="pmI-nU-E9C" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="X3Q-ff-nOV"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="f0y-za-S2q" secondAttribute="trailing" constant="87" id="Ygm-4e-hac"/>
                             <constraint firstItem="wfR-hq-VoW" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="YuS-FT-Lo2"/>
@@ -211,7 +199,6 @@
                             <constraint firstItem="aFZ-sO-GFV" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="pxl-ho-5bH"/>
                             <constraint firstItem="6zf-Bf-HgA" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="rBb-BZ-ZfJ"/>
                             <constraint firstItem="6zf-Bf-HgA" firstAttribute="top" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="108" id="sNs-ah-GQT"/>
-                            <constraint firstItem="KHy-f8-dmx" firstAttribute="leading" secondItem="eKi-CT-rRQ" secondAttribute="trailing" constant="8" id="scG-OA-l8G"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="sug-CG-bMO" secondAttribute="centerX" id="tHi-6L-n3W"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="pmI-nU-E9C" secondAttribute="bottom" constant="242" id="zb3-qP-cRZ"/>
                         </constraints>
@@ -222,7 +209,6 @@
                         <outlet property="activityIndicator" destination="744-ds-7y9" id="6FA-Bi-SZ3"/>
                         <outlet property="anonymousButton" destination="KHy-f8-dmx" id="1iU-K3-4so"/>
                         <outlet property="sendLinkButton" destination="pmI-nU-E9C" id="H8T-xC-N4u"/>
-                        <outlet property="signInButton" destination="eKi-CT-rRQ" id="Nbs-7h-uDH"/>
                         <outlet property="textField" destination="6zf-Bf-HgA" id="cKW-go-qwJ"/>
                         <outlet property="textView" destination="aFZ-sO-GFV" id="PN3-hx-eiQ"/>
                         <outlet property="textView2" destination="wfR-hq-VoW" id="6u4-Sh-Ttf"/>
@@ -230,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK8-aq-Hde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031.8840579710145" y="-232.36607142857142"/>
+            <point key="canvasLocation" x="1032" y="-232"/>
         </scene>
     </scenes>
     <resources>

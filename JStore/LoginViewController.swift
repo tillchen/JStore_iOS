@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
     @IBOutlet var textField: UITextField!
     
     @IBOutlet var sendLinkButton: UIButton!
-    @IBOutlet var signInButton: UIButton!
     @IBOutlet var anonymousButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
@@ -30,44 +29,55 @@ class LoginViewController: UIViewController {
     var mValidUsername: Bool = false
     var mEmail: String = ""
     var mLink: String! = ""
+    var mSignInButton: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setHyperLink()
+        
+        print("\(TAG) viewDidLoad")
 
         textField.text = UserDefaults.standard.value(forKey: USERNAME) as? String
         if let link = UserDefaults.standard.value(forKey: LINK) as? String {
             mLink = link
-            sendLinkButton.isHidden = true
-            signInButton.isHidden = false
             textField.isUserInteractionEnabled = false
+            mSignInButton = true
+            sendLinkButton.setTitle("Sign In", for: .normal)
+            //UserDefaults.standard.setValue("", forKey: LINK)
         }
         else {
             sendLinkButton.isHidden = false
-            signInButton.isHidden = true
             textField.isUserInteractionEnabled = true
+            mSignInButton = false
+            sendLinkButton.setTitle("Send Link", for: .normal)
         }
         
     }
 
     @IBAction func onSendLinkClicked(_ sender: Any) {
         
-        handleUsername()
-        
-        if mValidUsername {
-            sendEmail()
+        if mSignInButton {
+            onSignInClicked()
         }
+        else {
+            handleUsername()
         
+            if mValidUsername {
+                sendEmail()
+            }
+        }
     }
     
-    @IBAction func onSignInClicked(_ sender: Any) {
+    func onSignInClicked() {
         activityIndicator.startAnimating()
         if let email = UserDefaults.standard.value(forKey: EMAIL) as? String{
             Auth.auth().signIn(withEmail: email, link: mLink) { (user, error) in
                 self.activityIndicator.stopAnimating()
                 if error != nil {
-                    self.showAlert("Sorry. Login failed. Please try again or restart the app.")
+                    self.showAlert("Sorry. Login failed. Please try again with the new link or reinstall the app.")
+                    self.mEmail = email
+                    self.sendEmail()
                     return
                 }
             }

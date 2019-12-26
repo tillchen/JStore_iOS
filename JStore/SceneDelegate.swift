@@ -12,6 +12,8 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let LINK = "Link"
+    let TAG = "SceneDelegate"
+    
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -55,7 +57,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func handlePasswordlessSignIn(withURL url: URL) {
         let link = url.absoluteString
-        print("handlePasswordLessSignIn \(link)")
         if Auth.auth().isSignIn(withEmailLink: link) {
             UserDefaults.standard.set(link, forKey: LINK)
         }
