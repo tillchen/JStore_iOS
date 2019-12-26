@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D9n-2O-zCC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.0000000000002" y="-232.36607142857142"/>
+            <point key="canvasLocation" x="2710" y="-218"/>
         </scene>
         <!--Sell-->
         <scene sceneID="wg7-f3-ORb">
@@ -37,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800" y="423"/>
+            <point key="canvasLocation" x="2710.144927536232" y="422.54464285714283"/>
         </scene>
         <!--Me-->
         <scene sceneID="umi-4q-7Zk">
@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oac-Aa-eLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800" y="1072"/>
+            <point key="canvasLocation" x="2710.144927536232" y="1071.4285714285713"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -85,12 +85,29 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="xvc-dH-dun" kind="relationship" relationship="viewControllers" id="V7w-Tt-q4h"/>
-                        <segue destination="5vG-Hj-Aum" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="Cbl-1W-eB2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="423"/>
+            <point key="canvasLocation" x="1942.0289855072465" y="422.54464285714283"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="R5o-R8-9zj">
+            <objects>
+                <viewController id="geB-JW-XoI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Yg-nO-eTm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="9yR-6C-mgg"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="NewUserStarts" modalPresentationStyle="fullScreen" id="9ks-8a-xbt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pT5-xo-zyF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1654" y="-278"/>
         </scene>
         <!--JStore-->
         <scene sceneID="enQ-Lr-Lqx">
@@ -101,13 +118,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JStore: A Marketplace for  Jacobs University Bremen" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-4Y-g2a">
-                                <rect key="frame" x="78" y="83" width="258.5" height="55"/>
+                                <rect key="frame" x="78" y="127" width="258.5" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jstore_icon" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-za-S2q">
-                                <rect key="frame" x="87" y="280" width="240" height="128"/>
+                                <rect key="frame" x="87" y="324" width="240" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9gm-kU-f02"/>
                                     <constraint firstAttribute="width" secondItem="f0y-za-S2q" secondAttribute="height" multiplier="15:8" id="DAx-IV-ffh"/>
@@ -212,11 +229,33 @@
                         <outlet property="textField" destination="6zf-Bf-HgA" id="cKW-go-qwJ"/>
                         <outlet property="textView" destination="aFZ-sO-GFV" id="PN3-hx-eiQ"/>
                         <outlet property="textView2" destination="wfR-hq-VoW" id="6u4-Sh-Ttf"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="OldUser" modalPresentationStyle="fullScreen" id="qA9-Su-iii"/>
+                        <segue destination="geB-JW-XoI" kind="presentation" identifier="NewUser" modalPresentationStyle="fullScreen" id="SmI-tE-0Sc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK8-aq-Hde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="-232"/>
+            <point key="canvasLocation" x="836" y="20"/>
+        </scene>
+        <!--Root Navigation Controller-->
+        <scene sceneID="Nle-ux-Mvs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D9n-2O-zCC" customClass="RootNavigationController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DGB-yC-FlH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5vG-Hj-Aum" kind="relationship" relationship="rootViewController" id="OTB-L8-0SR"/>
+                        <segue destination="5vG-Hj-Aum" kind="presentation" identifier="Login" modalPresentationStyle="fullScreen" id="FFC-Ji-FkF"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="LoggedIn" modalPresentationStyle="fullScreen" id="SK4-nQ-j4s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J3m-X8-Ygn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="423"/>
         </scene>
     </scenes>
     <resources>
@@ -225,4 +264,8 @@
         <image name="jstore_icon" width="512" height="512"/>
         <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OTB-L8-0SR"/>
+        <segue reference="qA9-Su-iii"/>
+    </inferredMetricsTieBreakers>
 </document>

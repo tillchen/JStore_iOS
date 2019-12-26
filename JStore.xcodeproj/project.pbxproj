@@ -22,9 +22,9 @@
 		FC68919C2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
 		FC68919D2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
 		FC69D87223B125F10008610A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69D87123B125F10008610A /* LoginViewController.swift */; };
-		FC69D87423B15AD60008610A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69D87323B15AD60008610A /* TabBarViewController.swift */; };
 		FCB84C022399889F00124005 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB84C012399889F00124005 /* MeViewController.swift */; };
 		FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E523B51A5E0049187D /* SceneDelegate.swift */; };
+		FCF434E823B550240049187D /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E723B550240049187D /* RootNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +70,10 @@
 		FC68918A23994BF6004B41F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC68919A2399641F004B41F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC69D87123B125F10008610A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		FC69D87323B15AD60008610A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JStore.entitlements; sourceTree = "<group>"; };
 		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		FCF434E523B51A5E0049187D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FCF434E723B550240049187D /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +164,7 @@
 				FC68917423994BF5004B41F9 /* Info.plist */,
 				FC68919A2399641F004B41F9 /* GoogleService-Info.plist */,
 				FC69D87123B125F10008610A /* LoginViewController.swift */,
-				FC69D87323B15AD60008610A /* TabBarViewController.swift */,
+				FCF434E723B550240049187D /* RootNavigationController.swift */,
 			);
 			path = JStore;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
 				FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */,
 				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
-				FC69D87423B15AD60008610A /* TabBarViewController.swift in Sources */,
+				FCF434E823B550240049187D /* RootNavigationController.swift in Sources */,
 				FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
