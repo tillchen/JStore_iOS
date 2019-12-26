@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MeViewController: UIViewController {
 
@@ -17,6 +18,14 @@ class MeViewController: UIViewController {
     }
     
 
+    @IBAction func onSignOutClicked(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        }
+        catch let signOutError as NSError {
+            print ("Sign out error \(signOutError)")
+        }
+    }
     /*
     // MARK: - Navigation
 

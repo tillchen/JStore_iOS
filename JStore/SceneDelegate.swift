@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    let LINK = "Link"
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -47,7 +48,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        userActivity.webpageURL.flatMap(handlePasswordlessSignIn)!
+    }
 
+    func handlePasswordlessSignIn(withURL url: URL) {
+        let link = url.absoluteString
+        print("handlePasswordLessSignIn \(link)")
+        if Auth.auth().isSignIn(withEmailLink: link) {
+            UserDefaults.standard.set(link, forKey: LINK)
+        }
+    }
 
 }
 

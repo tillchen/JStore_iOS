@@ -11,7 +11,6 @@
 		BAD0BCF897BB283032CAEDB4 /* Pods_JStore_JStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE948AB9B2231A548D76FFC /* Pods_JStore_JStoreUITests.framework */; };
 		F12F02E9F4C8FE1BC973CB96 /* Pods_JStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
-		FC68916723994BF4004B41F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916623994BF4004B41F9 /* SceneDelegate.swift */; };
 		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
 		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
 		FC68916E23994BF4004B41F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC68916C23994BF4004B41F9 /* Main.storyboard */; };
@@ -25,6 +24,7 @@
 		FC69D87223B125F10008610A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69D87123B125F10008610A /* LoginViewController.swift */; };
 		FC69D87423B15AD60008610A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69D87323B15AD60008610A /* TabBarViewController.swift */; };
 		FCB84C022399889F00124005 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB84C012399889F00124005 /* MeViewController.swift */; };
+		FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E523B51A5E0049187D /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,6 @@
 		B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC68916623994BF4004B41F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		FC68916A23994BF4004B41F9 /* SellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellViewController.swift; sourceTree = "<group>"; };
 		FC68916D23994BF4004B41F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		FC69D87323B15AD60008610A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JStore.entitlements; sourceTree = "<group>"; };
 		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		FCF434E523B51A5E0049187D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,9 +152,9 @@
 		FC68916323994BF3004B41F9 /* JStore */ = {
 			isa = PBXGroup;
 			children = (
+				FCF434E523B51A5E0049187D /* SceneDelegate.swift */,
 				FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */,
 				FC68916423994BF4004B41F9 /* AppDelegate.swift */,
-				FC68916623994BF4004B41F9 /* SceneDelegate.swift */,
 				FC68916823994BF4004B41F9 /* BuyViewController.swift */,
 				FC68916A23994BF4004B41F9 /* SellViewController.swift */,
 				FCB84C012399889F00124005 /* MeViewController.swift */,
@@ -449,12 +449,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC69D87223B125F10008610A /* LoginViewController.swift in Sources */,
+				FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */,
 				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
 				FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */,
 				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
 				FC69D87423B15AD60008610A /* TabBarViewController.swift in Sources */,
 				FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */,
-				FC68916723994BF4004B41F9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KK8NHCY4ZG;
 				INFOPLIST_FILE = JStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -640,7 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tillchen.jstore.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -654,6 +655,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KK8NHCY4ZG;
 				INFOPLIST_FILE = JStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,7 +663,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tillchen.jstore.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

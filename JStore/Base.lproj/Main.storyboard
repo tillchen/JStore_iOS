@@ -46,10 +46,25 @@
                     <view key="view" contentMode="scaleToFill" id="Nph-P5-84i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-yQ-2uW">
+                                <rect key="frame" x="177" y="433" width="60" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="onSignOutClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="uTC-4z-nue"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qAc-yQ-2uW" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="389" id="Ic5-dE-yLd"/>
+                            <constraint firstItem="qAc-yQ-2uW" firstAttribute="leading" secondItem="1SZ-Vq-SJJ" secondAttribute="leading" constant="177" id="UVp-W5-1D6"/>
+                            <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="qAc-yQ-2uW" secondAttribute="trailing" constant="177" id="ahf-Re-Baw"/>
+                            <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="bottom" secondItem="qAc-yQ-2uW" secondAttribute="bottom" constant="350" id="jkM-35-NwT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1SZ-Vq-SJJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="person.circle" catalog="system" selectedImage="person.crop.circle" id="dS8-9N-CM4"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="person.circle.fill" catalog="system" selectedImage="person.circle.fill" id="dS8-9N-CM4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oac-Aa-eLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -70,7 +85,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="xvc-dH-dun" kind="relationship" relationship="viewControllers" id="V7w-Tt-q4h"/>
-                        <segue destination="5vG-Hj-Aum" kind="presentation" identifier="login" modalPresentationStyle="overFullScreen" id="Cbl-1W-eB2"/>
+                        <segue destination="5vG-Hj-Aum" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="Cbl-1W-eB2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -148,12 +163,22 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="744-ds-7y9">
                                 <rect key="frame" x="197" y="720" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKi-CT-rRQ">
+                                <rect key="frame" x="20" y="585" width="186" height="35"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="PrA-ma-nE1"/>
+                                    <action selector="onSignInClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="lUd-bP-lkJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="pmI-nU-E9C" firstAttribute="top" secondItem="6zf-Bf-HgA" secondAttribute="bottom" constant="35" id="1fJ-J5-Gg4"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="39" id="5Cd-Mv-BOS"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="poL-tW-Tig" secondAttribute="centerX" id="5bp-Bz-u1h"/>
+                            <constraint firstItem="eKi-CT-rRQ" firstAttribute="top" secondItem="6zf-Bf-HgA" secondAttribute="bottom" constant="35" id="6c3-4P-nyP"/>
                             <constraint firstItem="f0y-za-S2q" firstAttribute="top" secondItem="poL-tW-Tig" secondAttribute="top" constant="236" id="743-3J-Ips"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="wfR-hq-VoW" secondAttribute="trailing" constant="11" id="7oQ-if-oQ4"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="wfR-hq-VoW" secondAttribute="bottom" constant="150" id="7yN-Er-d7G"/>
@@ -162,6 +187,7 @@
                             <constraint firstItem="5dG-D5-xMU" firstAttribute="top" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="114" id="C69-MD-d8A"/>
                             <constraint firstItem="aFZ-sO-GFV" firstAttribute="top" secondItem="pmI-nU-E9C" secondAttribute="bottom" constant="18" id="D5u-ii-tVe"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="5dG-D5-xMU" secondAttribute="bottom" constant="317" id="JGi-Wh-eJo"/>
+                            <constraint firstItem="eKi-CT-rRQ" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="JNc-PE-c0d"/>
                             <constraint firstItem="5dG-D5-xMU" firstAttribute="leading" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="1" id="KW7-Qv-DJ4"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="KHy-f8-dmx" secondAttribute="bottom" constant="242" id="MCi-AI-soR"/>
                             <constraint firstItem="744-ds-7y9" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="197" id="O5z-xF-OHk"/>
@@ -172,6 +198,7 @@
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="pmI-nU-E9C" secondAttribute="trailing" constant="208" id="Tv8-EE-iqz"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="6zf-Bf-HgA" secondAttribute="trailing" constant="205" id="VrK-G8-MHz"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="5dG-D5-xMU" secondAttribute="trailing" constant="10.5" id="W5X-Pt-Xxf"/>
+                            <constraint firstItem="aFZ-sO-GFV" firstAttribute="top" secondItem="eKi-CT-rRQ" secondAttribute="bottom" constant="18" id="X0I-jf-GQ3"/>
                             <constraint firstItem="pmI-nU-E9C" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="X3Q-ff-nOV"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="trailing" secondItem="f0y-za-S2q" secondAttribute="trailing" constant="87" id="Ygm-4e-hac"/>
                             <constraint firstItem="wfR-hq-VoW" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="YuS-FT-Lo2"/>
@@ -184,6 +211,7 @@
                             <constraint firstItem="aFZ-sO-GFV" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="pxl-ho-5bH"/>
                             <constraint firstItem="6zf-Bf-HgA" firstAttribute="leading" secondItem="poL-tW-Tig" secondAttribute="leading" constant="20" id="rBb-BZ-ZfJ"/>
                             <constraint firstItem="6zf-Bf-HgA" firstAttribute="top" secondItem="f0y-za-S2q" secondAttribute="bottom" constant="108" id="sNs-ah-GQT"/>
+                            <constraint firstItem="KHy-f8-dmx" firstAttribute="leading" secondItem="eKi-CT-rRQ" secondAttribute="trailing" constant="8" id="scG-OA-l8G"/>
                             <constraint firstItem="PWg-4Y-g2a" firstAttribute="centerX" secondItem="sug-CG-bMO" secondAttribute="centerX" id="tHi-6L-n3W"/>
                             <constraint firstItem="poL-tW-Tig" firstAttribute="bottom" secondItem="pmI-nU-E9C" secondAttribute="bottom" constant="242" id="zb3-qP-cRZ"/>
                         </constraints>
@@ -194,6 +222,7 @@
                         <outlet property="activityIndicator" destination="744-ds-7y9" id="6FA-Bi-SZ3"/>
                         <outlet property="anonymousButton" destination="KHy-f8-dmx" id="1iU-K3-4so"/>
                         <outlet property="sendLinkButton" destination="pmI-nU-E9C" id="H8T-xC-N4u"/>
+                        <outlet property="signInButton" destination="eKi-CT-rRQ" id="Nbs-7h-uDH"/>
                         <outlet property="textField" destination="6zf-Bf-HgA" id="cKW-go-qwJ"/>
                         <outlet property="textView" destination="aFZ-sO-GFV" id="PN3-hx-eiQ"/>
                         <outlet property="textView2" destination="wfR-hq-VoW" id="6u4-Sh-Ttf"/>
@@ -207,8 +236,7 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="arrow.up" catalog="system" width="60" height="64"/>
-        <image name="jstore_icon" width="1024" height="1024"/>
-        <image name="person.circle" catalog="system" width="64" height="60"/>
-        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
+        <image name="jstore_icon" width="512" height="512"/>
+        <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

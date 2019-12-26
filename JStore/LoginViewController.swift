@@ -13,24 +13,42 @@ class LoginViewController: UIViewController {
     
     let TAG = "LoginViewController"
     let ADMIN = "tillchen417@gmail.com"
+    let USERNAME = "Username"
+    let LINK = "Link"
+    let EMAIL = "Email"
 
     @IBOutlet var textView: UITextView!
     @IBOutlet var textView2: UITextView!
     @IBOutlet var textField: UITextField!
     
     @IBOutlet var sendLinkButton: UIButton!
+    @IBOutlet var signInButton: UIButton!
     @IBOutlet var anonymousButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var mUsername: String = ""
     var mValidUsername: Bool = false
     var mEmail: String = ""
+    var mLink: String! = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setHyperLink()
 
+        textField.text = UserDefaults.standard.value(forKey: USERNAME) as? String
+        if let link = UserDefaults.standard.value(forKey: LINK) as? String {
+            mLink = link
+            sendLinkButton.isHidden = true
+            signInButton.isHidden = false
+            textField.isUserInteractionEnabled = false
+        }
+        else {
+            sendLinkButton.isHidden = false
+            signInButton.isHidden = true
+            textField.isUserInteractionEnabled = true
+        }
+        
     }
 
     @IBAction func onSendLinkClicked(_ sender: Any) {
@@ -43,6 +61,21 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBAction func onSignInClicked(_ sender: Any) {
+        activityIndicator.startAnimating()
+        if let email = UserDefaults.standard.value(forKey: EMAIL) as? String{
+            Auth.auth().signIn(withEmail: email, link: mLink) { (user, error) in
+                self.activityIndicator.stopAnimating()
+                if error != nil {
+                    self.showAlert("Sorry. Login failed. Please try again or restart the app.")
+                    return
+                }
+            }
+        }
+        else {
+            showAlert("Sorry. Something went wrong. Please restart or reinstall the app.")
+        }
+    }
     
     @IBAction func onAnonymousClicked(_ sender: Any) {
         
@@ -62,6 +95,7 @@ class LoginViewController: UIViewController {
                 self.showAlert("Some error occurred. Please try again.")
                 return
             }
+            UserDefaults.standard.set(self.mUsername, forKey: self.USERNAME)
             UserDefaults.standard.set(self.mEmail, forKey: "Email")
             self.showAlert("Link sent! Please check your email.")
         }
