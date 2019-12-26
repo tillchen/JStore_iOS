@@ -88,7 +88,15 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onAnonymousClicked(_ sender: Any) {
-        
+        activityIndicator.startAnimating()
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            self.activityIndicator.stopAnimating()
+            if error != nil {
+                self.showAlert("Sorry. Please try again.")
+                return
+            }
+            self.performSegue(withIdentifier: "Anonymous", sender: nil)
+        }
     }
     
     func sendEmail() {

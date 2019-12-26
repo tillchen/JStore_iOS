@@ -21,11 +21,22 @@ class MeViewController: UIViewController {
     @IBAction func onSignOutClicked(_ sender: Any) {
         do {
             try Auth.auth().signOut()
+            performSegue(withIdentifier: "Signout", sender: nil)
         }
         catch let signOutError as NSError {
-            print ("Sign out error \(signOutError)")
+            showAlert("Sorry. Something went wrong. Please try again.")
+            print(signOutError)
         }
     }
+    
+    func showAlert(_ content: String) {
+        let alertController = UIAlertController(title: "JStore", message:
+            content, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK!", style: .default))
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
