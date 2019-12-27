@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class RootNavigationController: UINavigationController {
+    
+    let TAG = "RootNagivationController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,7 @@ class RootNavigationController: UINavigationController {
     override func viewDidAppear(_ animated: Bool) {
         if let user = Auth.auth().currentUser { // Signed in
             if user.isAnonymous { // Anonymous
+                print("\(TAG) segue LoggedIn (Anonymous)")
                 performSegue(withIdentifier: "LoggedIn", sender: nil)
             }
             else { // Not Anonymous. Check whether in the DB
@@ -25,15 +28,18 @@ class RootNavigationController: UINavigationController {
                 let docRef = db.collection("users").document(user.email!)
                 docRef.getDocument() { (document, error) in
                     if let document = document, document.exists { // Exits, go to the tab controller
+                        print("\(self.TAG) segue LoggedIn")
                         self.performSegue(withIdentifier: "LoggedIn", sender: nil)
                     }
                     else { // Registered. But not in DB. Go to the New User Controller
+                        print("\(self.TAG) segue LoggedInButNotInDB")
                         self.performSegue(withIdentifier: "LoggedInButNotInDB", sender: nil)
                     }
                 }
             }
         }
         else { // not signed in, open LoginViewController
+            print("\(TAG) segue Login")
             performSegue(withIdentifier: "Login", sender: nil)
         }
     }

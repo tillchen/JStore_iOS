@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oac-Aa-eLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942" y="1081"/>
+            <point key="canvasLocation" x="2710" y="1067"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -92,7 +92,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942.0289855072465" y="422.54464285714283"/>
+            <point key="canvasLocation" x="1974" y="423"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="foA-Cm-vu6">
@@ -102,31 +102,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yP-rq-PMr">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="49e-Tb-3d3" kind="presentation" modalPresentationStyle="fullScreen" id="5Bc-7j-DVg"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Anonymous" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VPn-9r-7Fd">
-                                <rect key="frame" x="87" y="154" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VPn-9r-7Fd">
+                                <rect key="frame" x="32" y="101" width="351" height="138"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Welcome! You've signed in anonymously. You can browse through all the items in the Buy section. In order to use full functionalities, please sign out in the Me section first. And then sign in with your email.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPc-9r-Bdf">
+                                <rect key="frame" x="114" y="247" width="186" height="34"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Start Using!"/>
+                                <connections>
+                                    <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="bLe-JN-b94"/>
+                                    <segue destination="49e-Tb-3d3" kind="presentation" modalPresentationStyle="fullScreen" id="FGJ-eo-Cuv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="7yP-rq-PMr" firstAttribute="top" secondItem="VPn-9r-7Fd" secondAttribute="bottom" constant="151" id="D5y-gW-soL"/>
-                            <constraint firstItem="VPn-9r-7Fd" firstAttribute="leading" secondItem="Y1l-8b-seL" secondAttribute="leading" constant="87" id="IDb-2P-YY7"/>
-                            <constraint firstItem="Y1l-8b-seL" firstAttribute="bottom" secondItem="7yP-rq-PMr" secondAttribute="bottom" constant="399" id="NHt-HZ-D3L"/>
-                            <constraint firstItem="7yP-rq-PMr" firstAttribute="top" secondItem="Y1l-8b-seL" secondAttribute="top" constant="389" id="Xan-fU-Yr8"/>
-                            <constraint firstItem="7yP-rq-PMr" firstAttribute="leading" secondItem="Y1l-8b-seL" secondAttribute="leading" constant="184" id="Y9J-bp-eUR"/>
-                            <constraint firstItem="Y1l-8b-seL" firstAttribute="trailing" secondItem="7yP-rq-PMr" secondAttribute="trailing" constant="184" id="krY-uI-3cN"/>
-                            <constraint firstItem="VPn-9r-7Fd" firstAttribute="top" secondItem="Y1l-8b-seL" secondAttribute="top" constant="110" id="oyf-a7-uoO"/>
-                            <constraint firstItem="Y1l-8b-seL" firstAttribute="trailing" secondItem="VPn-9r-7Fd" secondAttribute="trailing" constant="87" id="til-3h-h8J"/>
+                            <constraint firstItem="Y1l-8b-seL" firstAttribute="trailing" secondItem="gPc-9r-Bdf" secondAttribute="trailing" constant="114" id="3ZG-bE-QHH"/>
+                            <constraint firstItem="VPn-9r-7Fd" firstAttribute="top" secondItem="Y1l-8b-seL" secondAttribute="top" constant="57" id="Id8-xA-XXO"/>
+                            <constraint firstItem="VPn-9r-7Fd" firstAttribute="leading" secondItem="Y1l-8b-seL" secondAttribute="leading" constant="32" id="KzH-B7-xn6"/>
+                            <constraint firstItem="gPc-9r-Bdf" firstAttribute="top" secondItem="VPn-9r-7Fd" secondAttribute="bottom" constant="8" id="Nxg-Er-Te9"/>
+                            <constraint firstItem="Y1l-8b-seL" firstAttribute="bottom" secondItem="gPc-9r-Bdf" secondAttribute="bottom" constant="581" id="far-PD-Xij"/>
+                            <constraint firstItem="Y1l-8b-seL" firstAttribute="bottom" secondItem="VPn-9r-7Fd" secondAttribute="bottom" constant="623" id="gCA-Wk-1H1"/>
+                            <constraint firstItem="Y1l-8b-seL" firstAttribute="trailing" secondItem="VPn-9r-7Fd" secondAttribute="trailing" constant="31" id="jHM-Wt-SV1"/>
+                            <constraint firstItem="gPc-9r-Bdf" firstAttribute="leading" secondItem="Y1l-8b-seL" secondAttribute="leading" constant="114" id="oQc-7z-0jb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y1l-8b-seL"/>
                     </view>
@@ -134,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8v-OU-XFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="-739"/>
+            <point key="canvasLocation" x="1360.8695652173915" y="-739.28571428571422"/>
         </scene>
         <!--NewUser-->
         <scene sceneID="R5o-R8-9zj">
@@ -322,8 +325,8 @@
         <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FFC-Ji-FkF"/>
-        <segue reference="dFe-Mf-aOF"/>
-        <segue reference="SK4-nQ-j4s"/>
+        <segue reference="M5A-Nh-EQy"/>
+        <segue reference="SmI-tE-0Sc"/>
+        <segue reference="qA9-Su-iii"/>
     </inferredMetricsTieBreakers>
 </document>

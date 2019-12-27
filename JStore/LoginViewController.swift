@@ -36,23 +36,35 @@ class LoginViewController: UIViewController {
         
         setHyperLink()
         
+        initUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: Notification.Name("LinkReceived"), object: nil)
+        
         print("\(TAG) viewDidLoad")
-
+        
+    }
+    
+    func initUI() {
+        sendLinkButton.isHidden = false
+        textField.isUserInteractionEnabled = true
+        mSignInButton = false
+        sendLinkButton.setTitle("Send Link", for: .normal)
+    }
+    
+    @objc func updateUI() { // executed when a link is received
+        print("\(TAG) updateUI")
         textField.text = UserDefaults.standard.value(forKey: USERNAME) as? String
         if let link = UserDefaults.standard.value(forKey: LINK) as? String {
             mLink = link
             textField.isUserInteractionEnabled = false
             mSignInButton = true
             sendLinkButton.setTitle("Sign In", for: .normal)
-            //UserDefaults.standard.setValue("", forKey: LINK)
+            UserDefaults.standard.setValue("", forKey: LINK)
         }
         else {
-            sendLinkButton.isHidden = false
-            textField.isUserInteractionEnabled = true
-            mSignInButton = false
-            sendLinkButton.setTitle("Send Link", for: .normal)
+            print("\(TAG) updateUI link empty")
+            showAlert("Something went wrong. Please send another link.")
         }
-        
     }
 
     @IBAction func onSendLinkClicked(_ sender: Any) {
@@ -79,6 +91,12 @@ class LoginViewController: UIViewController {
                     self.mEmail = email
                     self.sendEmail()
                     return
+                }
+                if (user?.additionalUserInfo!.isNewUser)! {
+                    self.performSegue(withIdentifier: "NewUser", sender: nil)
+                }
+                else {
+                    self.performSegue(withIdentifier: "OldUser", sender: nil)
                 }
             }
         }

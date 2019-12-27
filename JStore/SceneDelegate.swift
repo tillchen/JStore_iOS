@@ -59,8 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let link = url.absoluteString
         if Auth.auth().isSignIn(withEmailLink: link) {
             UserDefaults.standard.set(link, forKey: LINK)
-            (window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: false)
-            window?.rootViewController?.performSegue(withIdentifier: "Login", sender: nil)
+            NotificationCenter.default.post(name: Notification.Name("LinkReceived"), object: nil)
         }
     }
 
