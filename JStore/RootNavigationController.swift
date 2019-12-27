@@ -13,13 +13,28 @@ class RootNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Auth.auth().currentUser != nil { // signed in, open TabBarController
-            performSegue(withIdentifier: "LoggedIn", sender: nil)
+        if let user = Auth.auth().currentUser { // Signed in
+            if user.isAnonymous { // Anonymous
+                performSegue(withIdentifier: "LoggedIn", sender: nil)
+            }
+            else { // Not Anonymous. Check whether in the DB
+                let db = Firestore.firestore()
+                let docRef = db.collection("users").document(user.email!)
+                docRef.getDocument() { (document, error) in
+                    if let document = document, document.exists { // Exits, go to the tab controller
+                        self.performSegue(withIdentifier: "LoggedIn", sender: nil)
+                    }
+                    else { // Registered. But not in DB. Go to the New User Controller
+                        self.performSegue(withIdentifier: "LoggedInButNotInDB", sender: nil)
+                    }
+                }
+            }
+        }
+        else { // not signed in, open LoginViewController
+            performSegue(withIdentifier: "Login", sender: nil)
         }
     }
 

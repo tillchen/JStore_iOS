@@ -305,7 +305,6 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="5vG-Hj-Aum" kind="relationship" relationship="rootViewController" id="OTB-L8-0SR"/>
                         <segue destination="5vG-Hj-Aum" kind="presentation" identifier="Login" modalPresentationStyle="currentContext" id="FFC-Ji-FkF"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="LoggedIn" modalPresentationStyle="fullScreen" id="SK4-nQ-j4s"/>
                         <segue destination="geB-JW-XoI" kind="presentation" identifier="LoggedInButNotInDB" modalPresentationStyle="fullScreen" id="dFe-Mf-aOF"/>
@@ -324,7 +323,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FFC-Ji-FkF"/>
-        <segue reference="SmI-tE-0Sc"/>
-        <segue reference="qA9-Su-iii"/>
+        <segue reference="dFe-Mf-aOF"/>
+        <segue reference="SK4-nQ-j4s"/>
     </inferredMetricsTieBreakers>
 </document>
