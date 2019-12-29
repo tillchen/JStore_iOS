@@ -14,6 +14,8 @@
 		FC38168B23B902C300325162 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38168923B902C300325162 /* TabBarViewController.swift */; };
 		FC38169523B9051300325162 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169423B9051300325162 /* UIViewExtension.swift */; };
 		FC38169823B90A0A00325162 /* JStoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169723B90A0A00325162 /* JStoreUser.swift */; };
+		FC3816A023B9538600325162 /* AnonymousSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169F23B9538600325162 /* AnonymousSellViewController.swift */; };
+		FC3816A223B9576900325162 /* AnonymousMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3816A123B9576900325162 /* AnonymousMeViewController.swift */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
 		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
 		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
@@ -62,6 +64,8 @@
 		FC38168923B902C300325162 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = JStore/ViewContollers/TabView/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		FC38169423B9051300325162 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = JStore/Extensions/UIViewExtension.swift; sourceTree = SOURCE_ROOT; };
 		FC38169723B90A0A00325162 /* JStoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JStoreUser.swift; sourceTree = "<group>"; };
+		FC38169F23B9538600325162 /* AnonymousSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSellViewController.swift; sourceTree = "<group>"; };
+		FC3816A123B9576900325162 /* AnonymousMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousMeViewController.swift; sourceTree = "<group>"; };
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				FC68916823994BF4004B41F9 /* BuyViewController.swift */,
 				FC68916A23994BF4004B41F9 /* SellViewController.swift */,
 				FCB84C012399889F00124005 /* MeViewController.swift */,
+				FC38169F23B9538600325162 /* AnonymousSellViewController.swift */,
+				FC3816A123B9576900325162 /* AnonymousMeViewController.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -500,12 +506,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC3816A023B9538600325162 /* AnonymousSellViewController.swift in Sources */,
 				FC38169523B9051300325162 /* UIViewExtension.swift in Sources */,
 				FC69D87223B125F10008610A /* LoginViewController.swift in Sources */,
 				FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */,
 				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
 				FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */,
 				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
+				FC3816A223B9576900325162 /* AnonymousMeViewController.swift in Sources */,
 				FCF434E823B550240049187D /* RootNavigationController.swift in Sources */,
 				FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */,
 				FC38168B23B902C300325162 /* TabBarViewController.swift in Sources */,

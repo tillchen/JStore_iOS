@@ -1,28 +1,25 @@
 //
-//  MeViewController.swift
+//  AnonymousMeViewController.swift
 //  JStore
 //
-//  Created by Till Chen on 12/5/19.
+//  Created by Till Chen on 12/29/19.
 //  Copyright © 2019 Tianyao Chen. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class MeViewController: UIViewController {
+class AnonymousMeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if Auth.auth().currentUser!.isAnonymous {
-            performSegue(withIdentifier: "AnonymousMe", sender: nil)
-        }
+        self.navigationItem.hidesBackButton = true
     }
     
-
     @IBAction func onSignOutClicked(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            performSegue(withIdentifier: "Signout", sender: nil)
+            performSegue(withIdentifier: "AnonymousSignOut", sender: nil)
         }
         catch let signOutError as NSError {
             showAlert("Sorry. Something went wrong. Please try again.")
@@ -37,5 +34,4 @@ class MeViewController: UIViewController {
 
         self.present(alertController, animated: true, completion: nil)
     }
-
 }

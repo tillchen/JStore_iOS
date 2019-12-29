@@ -17,11 +17,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Buy" image="arrow.up" catalog="system" selectedImage="arrow.up" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="Buy" id="zkk-5K-OZL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="-218"/>
+            <point key="canvasLocation" x="3413" y="-218"/>
         </scene>
         <!--Sell-->
         <scene sceneID="wg7-f3-ORb">
@@ -33,11 +33,46 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sell" image="arrow.down" catalog="system" selectedImage="arrow.down" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" title="Sell" id="mki-nI-7vM"/>
+                    <connections>
+                        <segue destination="gzp-Bh-hWP" kind="show" identifier="AnonymousSell" id="ZIC-Bu-Ya6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710.144927536232" y="422.54464285714283"/>
+            <point key="canvasLocation" x="3414" y="423"/>
+        </scene>
+        <!--Sell-->
+        <scene sceneID="e73-Qb-C6r">
+            <objects>
+                <viewController id="gzp-Bh-hWP" customClass="AnonymousSellViewController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4J0-SR-yYK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gj7-dQ-HTT">
+                                <rect key="frame" x="32" y="120" width="351" height="138"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">It looks like you are an anonymous user. In order to use this section and unlock more functionalities, please go to Me section and sign out. Then sign in again with your email.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="d4j-7v-01N" firstAttribute="bottom" secondItem="gj7-dQ-HTT" secondAttribute="bottom" constant="555" id="Xrj-wp-hbR"/>
+                            <constraint firstItem="d4j-7v-01N" firstAttribute="trailing" secondItem="gj7-dQ-HTT" secondAttribute="trailing" constant="31" id="d2D-fR-oe8"/>
+                            <constraint firstItem="gj7-dQ-HTT" firstAttribute="top" secondItem="d4j-7v-01N" secondAttribute="top" constant="32" id="wJX-w4-Jea"/>
+                            <constraint firstItem="gj7-dQ-HTT" firstAttribute="leading" secondItem="d4j-7v-01N" secondAttribute="leading" constant="32" id="yIT-eQ-NAa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d4j-7v-01N"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sell" id="CjJ-iy-xXv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2B-Vd-IG9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4126" y="423"/>
         </scene>
         <!--Me-->
         <scene sceneID="umi-4q-7Zk">
@@ -57,22 +92,60 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qAc-yQ-2uW" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="389" id="Ic5-dE-yLd"/>
                             <constraint firstItem="qAc-yQ-2uW" firstAttribute="leading" secondItem="1SZ-Vq-SJJ" secondAttribute="leading" constant="177" id="UVp-W5-1D6"/>
                             <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="qAc-yQ-2uW" secondAttribute="trailing" constant="177" id="ahf-Re-Baw"/>
                             <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="bottom" secondItem="qAc-yQ-2uW" secondAttribute="bottom" constant="350" id="jkM-35-NwT"/>
+                            <constraint firstItem="qAc-yQ-2uW" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="345" id="snu-C3-JRs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1SZ-Vq-SJJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="person.circle.fill" catalog="system" selectedImage="person.circle.fill" id="dS8-9N-CM4"/>
+                    <navigationItem key="navigationItem" title="Me" id="u2I-AC-JxQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="5vG-Hj-Aum" kind="presentation" identifier="Signout" modalPresentationStyle="fullScreen" id="M5A-Nh-EQy"/>
+                        <segue destination="Ith-np-pdJ" kind="show" identifier="AnonymousMe" id="oFX-bp-PmF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oac-Aa-eLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="1067"/>
+            <point key="canvasLocation" x="3413" y="1074"/>
+        </scene>
+        <!--Me-->
+        <scene sceneID="Ak8-gM-PQP">
+            <objects>
+                <viewController id="Ith-np-pdJ" customClass="AnonymousMeViewController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tbA-bk-NQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjX-Mz-RKx">
+                                <rect key="frame" x="141" y="431" width="133" height="34"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="cuy-XV-Kgx"/>
+                                    <action selector="onSignOutClicked:" destination="Ith-np-pdJ" eventType="touchUpInside" id="2Jv-U6-Zeq"/>
+                                    <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="4YP-qn-bN4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tjX-Mz-RKx" firstAttribute="top" secondItem="C9g-dH-ZFn" secondAttribute="top" constant="343" id="9AB-sD-j8a"/>
+                            <constraint firstItem="C9g-dH-ZFn" firstAttribute="bottom" secondItem="tjX-Mz-RKx" secondAttribute="bottom" constant="348" id="NWz-Dl-LHL"/>
+                            <constraint firstItem="C9g-dH-ZFn" firstAttribute="trailing" secondItem="tjX-Mz-RKx" secondAttribute="trailing" constant="140" id="PGO-tf-s4U"/>
+                            <constraint firstItem="tjX-Mz-RKx" firstAttribute="leading" secondItem="C9g-dH-ZFn" secondAttribute="leading" constant="141" id="cNZ-Fh-NOB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C9g-dH-ZFn"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Me" id="tBY-nD-N0g"/>
+                    <connections>
+                        <segue destination="5vG-Hj-Aum" kind="presentation" identifier="AnonymousSignOut" modalPresentationStyle="fullScreen" id="e8N-lK-q8o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vTw-iN-cyp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3413" y="1733"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -85,9 +158,9 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="xvc-dH-dun" kind="relationship" relationship="viewControllers" id="V7w-Tt-q4h"/>
+                        <segue destination="Yv7-QI-E5H" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="bKM-sP-80i" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="mGI-V6-ClN" kind="relationship" relationship="viewControllers" id="V7w-Tt-q4h"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -413,6 +486,63 @@
             </objects>
             <point key="canvasLocation" x="54" y="423"/>
         </scene>
+        <!--Sell-->
+        <scene sceneID="bCR-Nm-c8R">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bKM-sP-80i" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sell" image="arrow.down" catalog="system" selectedImage="arrow.down" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LLN-J3-LZC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="WG2-8E-LIS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HB6-fe-xRM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2709" y="423"/>
+        </scene>
+        <!--Buy-->
+        <scene sceneID="5jf-g4-vCy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yv7-QI-E5H" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Buy" image="arrow.up" catalog="system" selectedImage="arrow.up" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pJj-bI-6cX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="AfW-Fq-1Km"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zR1-SF-sqc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708.6956521739135" y="-218.30357142857142"/>
+        </scene>
+        <!--Me-->
+        <scene sceneID="3i2-8w-T2J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mGI-V6-ClN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" image="person.circle.fill" catalog="system" selectedImage="person.circle.fill" id="dS8-9N-CM4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pid-bS-Kv0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xvc-dH-dun" kind="relationship" relationship="rootViewController" id="Jv9-UU-kR3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mto-sY-56O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2709" y="1075"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
@@ -421,7 +551,7 @@
         <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FFC-Ji-FkF"/>
+        <segue reference="e8N-lK-q8o"/>
         <segue reference="SmI-tE-0Sc"/>
         <segue reference="9ks-8a-xbt"/>
     </inferredMetricsTieBreakers>

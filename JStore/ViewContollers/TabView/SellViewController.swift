@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class SellViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if Auth.auth().currentUser!.isAnonymous {
+            performSegue(withIdentifier: "AnonymousSell", sender: nil)
+        }
     }
 
 
