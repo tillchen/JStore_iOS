@@ -13,6 +13,7 @@ class NewUserViewController: UIViewController {
     
     let WHATSAPP = 0
     let EMAIL = 1
+    let TAG = "NewUserViewController"
 
     @IBOutlet var mNameTextField: UITextField!
     @IBOutlet var mSegmentedControl: UISegmentedControl!
@@ -30,8 +31,6 @@ class NewUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mEmail = (Auth.auth().currentUser?.email)!
     }
     
     @IBAction func onSegmentedControlIndexChanged(_ sender: Any) {
@@ -86,7 +85,42 @@ class NewUserViewController: UIViewController {
     }
     
     func addUserToDB() {
-        
+        let db = Firestore.firestore()
+        mEmail = (Auth.auth().currentUser?.email)!
+        let user = JStoreUser(fullName: mName, whatsApp: mWhatsApp, phoneNumber: mPrefix + mPhone, email: mEmail, creationDate: nil)
+        let data: [String: Any] = [
+            "fullName": user.fullName,
+            "whatsApp": user.whatsApp,
+            "phoneNumber": user.phoneNumber,
+            "email": user.email,
+            "creationDate": user.creationDate as Any
+        ]
+        mActivityIndicator.startAnimating()
+        db.collection("users").document(mEmail).setData(data) { err in
+            if err != nil {
+                self.mActivityIndicator.stopAnimating()
+                self.showAlert("Sorry. Please try again.")
+            }
+            else {
+                self.addCreationDate()
+            }
+        }
+    }
+    
+    func addCreationDate() {
+        print("\(TAG) addCreationDate")
+        let db = Firestore.firestore()
+        db.collection("users").document(mEmail).updateData([
+            "creationDate": FieldValue.serverTimestamp()
+        ]) { err in
+            self.mActivityIndicator.stopAnimating()
+            if err != nil {
+                self.showAlert("Sorry. Please try again.")
+            }
+            else {
+                self.performSegue(withIdentifier: "NewUserStarts", sender: nil)
+            }
+        }
     }
     
     func showAlert(_ content: String) {

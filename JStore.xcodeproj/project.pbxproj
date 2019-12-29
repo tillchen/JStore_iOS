@@ -13,6 +13,7 @@
 		FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38168123B8DC7D00325162 /* NewUserViewController.swift */; };
 		FC38168B23B902C300325162 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38168923B902C300325162 /* TabBarViewController.swift */; };
 		FC38169523B9051300325162 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169423B9051300325162 /* UIViewExtension.swift */; };
+		FC38169823B90A0A00325162 /* JStoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169723B90A0A00325162 /* JStoreUser.swift */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
 		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
 		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
@@ -60,6 +61,7 @@
 		FC38168123B8DC7D00325162 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		FC38168923B902C300325162 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = JStore/ViewContollers/TabView/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		FC38169423B9051300325162 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = JStore/Extensions/UIViewExtension.swift; sourceTree = SOURCE_ROOT; };
+		FC38169723B90A0A00325162 /* JStoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JStoreUser.swift; sourceTree = "<group>"; };
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FC38169623B909F100325162 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC38169723B90A0A00325162 /* JStoreUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FC68915823994BF3004B41F9 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		FC68916323994BF3004B41F9 /* JStore */ = {
 			isa = PBXGroup;
 			children = (
+				FC38169623B909F100325162 /* Models */,
 				FC38169323B904FD00325162 /* Extensions */,
 				FC38168523B901F200325162 /* Delegates */,
 				FC38168623B9022D00325162 /* ViewContollers */,
@@ -499,6 +510,7 @@
 				FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */,
 				FC38168B23B902C300325162 /* TabBarViewController.swift in Sources */,
 				FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */,
+				FC38169823B90A0A00325162 /* JStoreUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
