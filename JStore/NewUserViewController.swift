@@ -74,6 +74,14 @@ class NewUserViewController: UIViewController {
             showAlert("Sorry. Your Phone can't be empty.")
             return false
         }
+        if mWhatsApp && mPrefix.contains(" ") {
+            showAlert("Sorry. Please don't contain space for your prefix.")
+            return false
+        }
+        if mWhatsApp && mPhone.contains(" ") {
+            showAlert("Sorry. Please don't contain space for your phone.")
+            return false
+        }
         return true
     }
     
