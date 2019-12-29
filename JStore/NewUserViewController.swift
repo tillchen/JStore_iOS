@@ -10,21 +10,32 @@ import UIKit
 
 class NewUserViewController: UIViewController {
 
+    @IBOutlet var mNameTextField: UITextField!
+    @IBOutlet var mSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet var mPlusSignLabel: UILabel!
+    @IBOutlet var mPrefixTextField: UITextField!
+    @IBOutlet var mPhoneTextField: UITextField!
+    @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func onStartClicked(_ sender: Any) {
     }
-    */
+    
+}
 
+extension NewUserViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // dismiss the keyboard when pressing return
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { // dismiss the keyboard when touching
+        super.touchesEnded(touches, with: event)
+        view.endEditing(true)
+    }
 }

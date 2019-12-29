@@ -158,6 +158,9 @@
                                 <rect key="frame" x="32" y="178" width="331" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <connections>
+                                    <outlet property="delegate" destination="geB-JW-XoI" id="Hwm-Bn-jJd"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred Way of Contact:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yS-mN-864">
                                 <rect key="frame" x="32" y="250" width="199" height="21"/>
@@ -182,11 +185,17 @@
                                 <rect key="frame" x="32" y="372" width="79.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                <connections>
+                                    <outlet property="delegate" destination="geB-JW-XoI" id="9OK-gM-AqT"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-a9-S1T">
                                 <rect key="frame" x="119" y="372" width="244" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                <connections>
+                                    <outlet property="delegate" destination="geB-JW-XoI" id="8q4-VN-bVE"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRt-eD-skw">
                                 <rect key="frame" x="32" y="438" width="133" height="34"/>
@@ -194,6 +203,7 @@
                                 <state key="normal" title="Start Using!"/>
                                 <connections>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="MXu-Y6-SeM"/>
+                                    <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="5Qy-Ic-yVY"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dDk-De-D6M">
@@ -242,6 +252,12 @@
                         <viewLayoutGuide key="safeArea" id="9yR-6C-mgg"/>
                     </view>
                     <connections>
+                        <outlet property="mActivityIndicator" destination="dDk-De-D6M" id="hek-dR-AzM"/>
+                        <outlet property="mNameTextField" destination="9PK-lW-qqd" id="KvX-kt-Exr"/>
+                        <outlet property="mPhoneTextField" destination="ewg-a9-S1T" id="G36-9e-AFq"/>
+                        <outlet property="mPlusSignLabel" destination="hm6-t6-PMs" id="SEB-9Q-BOQ"/>
+                        <outlet property="mPrefixTextField" destination="huf-ce-BA1" id="TzG-Um-rHu"/>
+                        <outlet property="mSegmentedControl" destination="sFe-NF-W4B" id="KfV-kE-CvC"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="NewUserStarts" modalPresentationStyle="fullScreen" id="9ks-8a-xbt"/>
                     </connections>
                 </viewController>
@@ -249,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="1973.913043478261" y="-384.375"/>
         </scene>
-        <!--JStore-->
+        <!--LoginViewController-->
         <scene sceneID="enQ-Lr-Lqx">
             <objects>
-                <viewController id="5vG-Hj-Aum" customClass="LoginViewController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LoginViewController" id="5vG-Hj-Aum" customClass="LoginViewController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sug-CG-bMO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,8 +418,8 @@
         <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M5A-Nh-EQy"/>
+        <segue reference="FFC-Ji-FkF"/>
         <segue reference="SmI-tE-0Sc"/>
-        <segue reference="qA9-Su-iii"/>
+        <segue reference="FGJ-eo-Cuv"/>
     </inferredMetricsTieBreakers>
 </document>
