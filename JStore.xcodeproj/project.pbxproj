@@ -11,6 +11,8 @@
 		BAD0BCF897BB283032CAEDB4 /* Pods_JStore_JStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE948AB9B2231A548D76FFC /* Pods_JStore_JStoreUITests.framework */; };
 		F12F02E9F4C8FE1BC973CB96 /* Pods_JStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */; };
 		FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38168123B8DC7D00325162 /* NewUserViewController.swift */; };
+		FC38168B23B902C300325162 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38168923B902C300325162 /* TabBarViewController.swift */; };
+		FC38169523B9051300325162 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169423B9051300325162 /* UIViewExtension.swift */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
 		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
 		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
@@ -56,6 +58,8 @@
 		9AE948AB9B2231A548D76FFC /* Pods_JStore_JStoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JStore_JStoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC38168123B8DC7D00325162 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		FC38168923B902C300325162 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = JStore/ViewContollers/TabView/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		FC38169423B9051300325162 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = JStore/Extensions/UIViewExtension.swift; sourceTree = SOURCE_ROOT; };
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,45 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FC38168523B901F200325162 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FC68916423994BF4004B41F9 /* AppDelegate.swift */,
+				FCF434E523B51A5E0049187D /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		FC38168623B9022D00325162 /* ViewContollers */ = {
+			isa = PBXGroup;
+			children = (
+				FCF434E723B550240049187D /* RootNavigationController.swift */,
+				FC69D87123B125F10008610A /* LoginViewController.swift */,
+				FC38168123B8DC7D00325162 /* NewUserViewController.swift */,
+				FC38168723B9025C00325162 /* TabView */,
+			);
+			path = ViewContollers;
+			sourceTree = "<group>";
+		};
+		FC38168723B9025C00325162 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				FC38168923B902C300325162 /* TabBarViewController.swift */,
+				FC68916823994BF4004B41F9 /* BuyViewController.swift */,
+				FC68916A23994BF4004B41F9 /* SellViewController.swift */,
+				FCB84C012399889F00124005 /* MeViewController.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		FC38169323B904FD00325162 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC38169423B9051300325162 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FC68915823994BF3004B41F9 = {
 			isa = PBXGroup;
 			children = (
@@ -154,20 +197,15 @@
 		FC68916323994BF3004B41F9 /* JStore */ = {
 			isa = PBXGroup;
 			children = (
-				FCF434E523B51A5E0049187D /* SceneDelegate.swift */,
-				FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */,
-				FC68916423994BF4004B41F9 /* AppDelegate.swift */,
-				FC68916823994BF4004B41F9 /* BuyViewController.swift */,
-				FC68916A23994BF4004B41F9 /* SellViewController.swift */,
-				FCB84C012399889F00124005 /* MeViewController.swift */,
+				FC38169323B904FD00325162 /* Extensions */,
+				FC38168523B901F200325162 /* Delegates */,
+				FC38168623B9022D00325162 /* ViewContollers */,
 				FC68916C23994BF4004B41F9 /* Main.storyboard */,
-				FC68916F23994BF5004B41F9 /* Assets.xcassets */,
 				FC68917123994BF5004B41F9 /* LaunchScreen.storyboard */,
+				FC68916F23994BF5004B41F9 /* Assets.xcassets */,
+				FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */,
 				FC68917423994BF5004B41F9 /* Info.plist */,
 				FC68919A2399641F004B41F9 /* GoogleService-Info.plist */,
-				FC69D87123B125F10008610A /* LoginViewController.swift */,
-				FCF434E723B550240049187D /* RootNavigationController.swift */,
-				FC38168123B8DC7D00325162 /* NewUserViewController.swift */,
 			);
 			path = JStore;
 			sourceTree = "<group>";
@@ -451,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC38169523B9051300325162 /* UIViewExtension.swift in Sources */,
 				FC69D87223B125F10008610A /* LoginViewController.swift in Sources */,
 				FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */,
 				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
@@ -458,6 +497,7 @@
 				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
 				FCF434E823B550240049187D /* RootNavigationController.swift in Sources */,
 				FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */,
+				FC38168B23B902C300325162 /* TabBarViewController.swift in Sources */,
 				FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
