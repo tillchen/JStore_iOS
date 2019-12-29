@@ -62,23 +62,23 @@ class NewUserViewController: UIViewController {
         mPrefix = mPrefixTextField.text!
         mPhone = mPhoneTextField.text!
         if mName.isEmpty {
-            showAlert("Sorry. Your Full Name can't be empty.")
+            showAlert("Sorry. Your full name can't be empty.")
             return false
         }
         if mWhatsApp && mPrefix.isEmpty {
-            showAlert("Sorry. Your Prefix can't be empty.")
+            showAlert("Sorry. Your prefix can't be empty.")
             return false
         }
         if mWhatsApp && mPhone.isEmpty {
-            showAlert("Sorry. Your Phone can't be empty.")
+            showAlert("Sorry. Your phone number can't be empty.")
             return false
         }
         if mWhatsApp && mPrefix.contains(" ") {
-            showAlert("Sorry. Please don't contain space for your prefix.")
+            showAlert("Sorry. Please don't contain any space for your prefix.")
             return false
         }
         if mWhatsApp && mPhone.contains(" ") {
-            showAlert("Sorry. Please don't contain space for your phone.")
+            showAlert("Sorry. Please don't contain any space for your phone number.")
             return false
         }
         return true
