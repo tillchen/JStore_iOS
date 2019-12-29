@@ -10,6 +10,7 @@
 		7EB979CC68B12E1C67B8F943 /* Pods_JStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853A0898348DEDD6A3764A3F /* Pods_JStore.framework */; };
 		BAD0BCF897BB283032CAEDB4 /* Pods_JStore_JStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE948AB9B2231A548D76FFC /* Pods_JStore_JStoreUITests.framework */; };
 		F12F02E9F4C8FE1BC973CB96 /* Pods_JStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */; };
+		FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38168123B8DC7D00325162 /* NewUserViewController.swift */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
 		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
 		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
@@ -54,6 +55,7 @@
 		853A0898348DEDD6A3764A3F /* Pods_JStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE948AB9B2231A548D76FFC /* Pods_JStore_JStoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JStore_JStoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1CBD3D67B5F0D7A7C3B4E2D /* Pods_JStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC38168123B8DC7D00325162 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				FC68919A2399641F004B41F9 /* GoogleService-Info.plist */,
 				FC69D87123B125F10008610A /* LoginViewController.swift */,
 				FCF434E723B550240049187D /* RootNavigationController.swift */,
+				FC38168123B8DC7D00325162 /* NewUserViewController.swift */,
 			);
 			path = JStore;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */,
 				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
 				FCF434E823B550240049187D /* RootNavigationController.swift in Sources */,
+				FC38168223B8DC7D00325162 /* NewUserViewController.swift in Sources */,
 				FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
