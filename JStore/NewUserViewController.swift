@@ -9,6 +9,9 @@
 import UIKit
 
 class NewUserViewController: UIViewController {
+    
+    let WHATSAPP = 0
+    let EMAIL = 1
 
     @IBOutlet var mNameTextField: UITextField!
     @IBOutlet var mSegmentedControl: UISegmentedControl!
@@ -18,9 +21,28 @@ class NewUserViewController: UIViewController {
     @IBOutlet var mPhoneTextField: UITextField!
     @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
     
+    var mWhatsApp: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    @IBAction func onSegmentedControlIndexChanged(_ sender: Any) {
+        switch mSegmentedControl.selectedSegmentIndex {
+        case WHATSAPP:
+            mWhatsApp = true
+            mPlusSignLabel.isHidden = false
+            mPrefixTextField.isHidden = false
+            mPhoneTextField.isHidden = false
+        case EMAIL:
+            mWhatsApp = false
+            mPlusSignLabel.isHidden = true
+            mPrefixTextField.isHidden = true
+            mPhoneTextField.isHidden = true
+        default:
+            break
+        }
     }
     
     @IBAction func onStartClicked(_ sender: Any) {
