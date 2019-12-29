@@ -182,13 +182,6 @@ class LoginViewController: UIViewController {
 
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

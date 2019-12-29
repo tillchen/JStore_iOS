@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewUserViewController: UIViewController {
     
@@ -22,10 +23,15 @@ class NewUserViewController: UIViewController {
     @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
     
     var mWhatsApp: Bool = true
+    var mEmail: String = ""
+    var mName: String = ""
+    var mPrefix: String =  ""
+    var mPhone: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        mEmail = (Auth.auth().currentUser?.email)!
     }
     
     @IBAction func onSegmentedControlIndexChanged(_ sender: Any) {
@@ -46,6 +52,41 @@ class NewUserViewController: UIViewController {
     }
     
     @IBAction func onStartClicked(_ sender: Any) {
+        if !checkTextFields() {
+            return
+        }
+        addUserToDB()
+    }
+    
+    func checkTextFields() -> Bool {
+        mName = mNameTextField.text!
+        mPrefix = mPrefixTextField.text!
+        mPhone = mPhoneTextField.text!
+        if mName.isEmpty {
+            showAlert("Sorry. Your Full Name can't be empty.")
+            return false
+        }
+        if mWhatsApp && mPrefix.isEmpty {
+            showAlert("Sorry. Your Prefix can't be empty.")
+            return false
+        }
+        if mWhatsApp && mPhone.isEmpty {
+            showAlert("Sorry. Your Phone can't be empty.")
+            return false
+        }
+        return true
+    }
+    
+    func addUserToDB() {
+        
+    }
+    
+    func showAlert(_ content: String) {
+        let alertController = UIAlertController(title: "JStore", message:
+            content, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK!", style: .default))
+
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
