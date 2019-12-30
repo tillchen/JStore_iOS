@@ -19,14 +19,21 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let mCategoryPicker = UIPickerView()
     let mConditionPicker = UIPickerView()
     
+    @IBOutlet var mTitleTextField: UITextField!
     @IBOutlet var mCategoryTextField: UITextField!
     @IBOutlet var mConditionTextField: UITextField!
+    @IBOutlet var mDescriptionTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if Auth.auth().currentUser!.isAnonymous {
             performSegue(withIdentifier: "AnonymousSell", sender: nil)
         }
+        initUI()
+
+    }
+    
+    func initUI() {
         mCategoryPicker.delegate = self
         mCategoryPicker.dataSource = self
         mCategoryPicker.tag = CATEGORY_PICKER
@@ -37,6 +44,8 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mConditionTextField.inputView = mConditionPicker
         mCategoryTextField.text = mCategories[0] // default
         mConditionTextField.text = mConditions[0] // default
+        mDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor // TODO
+        mDescriptionTextView.layer.borderWidth = 1
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
