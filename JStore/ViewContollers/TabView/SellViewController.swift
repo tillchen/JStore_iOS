@@ -44,7 +44,11 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mConditionTextField.inputView = mConditionPicker
         mCategoryTextField.text = mCategories[0] // default
         mConditionTextField.text = mConditions[0] // default
-        mDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor // TODO
+        var color = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 0.2)
+        if traitCollection.userInterfaceStyle == .light {
+            color = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 1.0)
+        }
+        mDescriptionTextView.layer.borderColor = color.cgColor
         mDescriptionTextView.layer.borderWidth = 1
     }
     
