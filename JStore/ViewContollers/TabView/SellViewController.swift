@@ -30,6 +30,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet var mBankTransferSwitch: UISwitch!
     @IBOutlet var mPayPalSwitch: UISwitch!
     @IBOutlet var mMealPlanSwitch: UISwitch!
+    @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

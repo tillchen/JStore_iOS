@@ -31,6 +31,7 @@
 		FCB84C022399889F00124005 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB84C012399889F00124005 /* MeViewController.swift */; };
 		FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E523B51A5E0049187D /* SceneDelegate.swift */; };
 		FCF434E823B550240049187D /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E723B550240049187D /* RootNavigationController.swift */; };
+		FCF6BB8A23BB9C28003C911A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6BB8923BB9C28003C911A /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		FCF434E523B51A5E0049187D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FCF434E723B550240049187D /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		FCF6BB8923BB9C28003C911A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				FC38169723B90A0A00325162 /* JStoreUser.swift */,
+				FCF6BB8923BB9C28003C911A /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				FC69D87223B125F10008610A /* LoginViewController.swift in Sources */,
 				FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */,
 				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
+				FCF6BB8A23BB9C28003C911A /* Post.swift in Sources */,
 				FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */,
 				FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */,
 				FC3816A223B9576900325162 /* AnonymousMeViewController.swift in Sources */,

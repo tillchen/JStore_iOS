@@ -87,7 +87,7 @@
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="jJC-Ad-o3q"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-PN-IfL">
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-PN-IfL">
                                 <rect key="frame" x="323" y="484" width="57" height="2"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9N-Dd-OJx">
@@ -109,7 +109,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbD-Ka-Dtu">
                                 <rect key="frame" x="35" y="498" width="97" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred Payment Options:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5O8-7K-lV5">
                                 <rect key="frame" x="33" y="543" width="212" height="21"/>
@@ -167,6 +167,9 @@
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="2Ik-sV-jlR"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Mqf-bF-P1g">
+                                <rect key="frame" x="196" y="693" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -174,6 +177,7 @@
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="h8J-r3-SCz" secondAttribute="trailing" constant="302" id="0d6-W0-btT"/>
                             <constraint firstItem="CX1-FT-rcB" firstAttribute="top" secondItem="5O8-7K-lV5" secondAttribute="bottom" constant="18" id="0zg-ZF-847"/>
                             <constraint firstItem="C3f-pp-wOL" firstAttribute="leading" secondItem="CX1-FT-rcB" secondAttribute="trailing" constant="20" id="1W2-Wi-AFM"/>
+                            <constraint firstItem="Mqf-bF-P1g" firstAttribute="top" secondItem="nG8-Bf-WxI" secondAttribute="bottom" constant="38" id="40g-du-2mf"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="ptm-mm-7pw" secondAttribute="bottom" constant="576" id="4Ey-1P-XLy"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="gyn-1G-4YQ" secondAttribute="bottom" constant="678" id="4rc-cB-rq2"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="nG8-Bf-WxI" secondAttribute="bottom" constant="158" id="508-IW-Ql7"/>
@@ -192,6 +196,7 @@
                             <constraint firstItem="U9N-Dd-OJx" firstAttribute="top" secondItem="DbT-2S-VZS" secondAttribute="bottom" constant="25" id="F4O-Ek-mRn"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Unb-eC-knq" secondAttribute="trailing" constant="382" id="Fhx-Xq-BiD"/>
                             <constraint firstItem="EJw-66-tWl" firstAttribute="top" secondItem="wHe-zG-3FW" secondAttribute="bottom" constant="24" id="Fv9-vV-gF2"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Mqf-bF-P1g" secondAttribute="trailing" constant="198" id="G57-rL-YuU"/>
                             <constraint firstItem="R8T-We-dgZ" firstAttribute="leading" secondItem="0a1-0M-X3h" secondAttribute="trailing" constant="8" id="GeD-GI-zLY"/>
                             <constraint firstItem="C3f-pp-wOL" firstAttribute="top" secondItem="5O8-7K-lV5" secondAttribute="bottom" constant="13" id="I84-1G-MLd"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="h8J-r3-SCz" secondAttribute="bottom" constant="541" id="KOH-yJ-Blr"/>
@@ -203,6 +208,7 @@
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="gyn-1G-4YQ" secondAttribute="trailing" constant="34" id="NVi-8h-rwR"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="hGB-Dv-ib5" secondAttribute="trailing" constant="248" id="OQq-z7-M4A"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="DbT-2S-VZS" secondAttribute="trailing" constant="34" id="PR3-PV-Kl9"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="Mqf-bF-P1g" secondAttribute="bottom" constant="100" id="Pbt-8V-MjV"/>
                             <constraint firstItem="SAH-ze-2w9" firstAttribute="leading" secondItem="w3M-sX-AXS" secondAttribute="trailing" constant="8" id="QMI-hd-5w9"/>
                             <constraint firstItem="hGB-Dv-ib5" firstAttribute="top" secondItem="SAH-ze-2w9" secondAttribute="bottom" constant="26" id="SM2-1V-8yV"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="R8T-We-dgZ" secondAttribute="trailing" constant="100" id="Shk-yD-0sW"/>
@@ -238,6 +244,7 @@
                             <constraint firstItem="DbT-2S-VZS" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="33" id="jzz-Mp-qsV"/>
                             <constraint firstItem="U9N-Dd-OJx" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="35" id="kHr-Pc-9bV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eb5-PN-IfL" secondAttribute="trailing" constant="14" id="lih-ea-RCU"/>
+                            <constraint firstItem="Mqf-bF-P1g" firstAttribute="leading" secondItem="hGB-Dv-ib5" secondAttribute="trailing" constant="30" id="lwU-e8-OBp"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="SAH-ze-2w9" secondAttribute="bottom" constant="153" id="mjc-83-9bd"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="0a1-0M-X3h" secondAttribute="trailing" constant="155" id="mxB-4S-SqF"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="C3f-pp-wOL" secondAttribute="trailing" constant="273" id="naa-uQ-o5W"/>
@@ -261,6 +268,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sell" id="mki-nI-7vM"/>
                     <connections>
+                        <outlet property="mActivityIndicator" destination="Mqf-bF-P1g" id="1CL-oj-r4f"/>
                         <outlet property="mBankTransferSwitch" destination="R8T-We-dgZ" id="YeB-0C-nfY"/>
                         <outlet property="mCashSwitch" destination="C3f-pp-wOL" id="lMD-XM-mF3"/>
                         <outlet property="mCategoryTextField" destination="ptm-mm-7pw" id="hSK-h2-G49"/>
@@ -789,6 +797,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="e8N-lK-q8o"/>
         <segue reference="SmI-tE-0Sc"/>
-        <segue reference="9ks-8a-xbt"/>
+        <segue reference="qA9-Su-iii"/>
     </inferredMetricsTieBreakers>
 </document>
