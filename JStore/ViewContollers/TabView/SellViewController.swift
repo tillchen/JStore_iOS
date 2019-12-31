@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate{
+class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     let CATEGORY_PICKER = 0
     let CONDITION_PICKER = 1
@@ -32,20 +32,14 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet var mMealPlanSwitch: UISwitch!
     @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
     
+    var mImagePicker: UIImagePickerController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if Auth.auth().currentUser!.isAnonymous {
             performSegue(withIdentifier: "AnonymousSell", sender: nil)
         }
         initUI()
-
-    }
-    @IBAction func onTakePhotoClicked(_ sender: Any) {
-    }
-    @IBAction func onAddPhotoClicked(_ sender: Any) {
-    }
-    
-    @IBAction func onFinishClicked(_ sender: Any) {
     }
     
     func initUI() {
@@ -69,6 +63,33 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mDescriptionTextView.textColor = UIColor.lightGray
         mDescriptionTextView.delegate = self
     }
+    
+    @IBAction func onTakePhotoClicked(_ sender: Any) {
+        mImagePicker = UIImagePickerController()
+        mImagePicker.delegate = self
+        mImagePicker.sourceType = .camera
+        present(mImagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        mImagePicker.dismiss(animated: true, completion: nil)
+        let image = info[.originalImage] as? UIImage
+        print(image?.size as Any)
+    }
+    
+    @IBAction func onAddPhotoClicked(_ sender: Any) {
+        mImagePicker = UIImagePickerController()
+        mImagePicker.delegate = self
+        mImagePicker.sourceType = .photoLibrary
+        present(mImagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func onFinishClicked(_ sender: Any) {
+        // TODO: Check the length of textFields and textView
+        // TODO: Handle the format of price
+    }
+    
+
     
     // For the description textView:
     
