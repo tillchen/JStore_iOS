@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController { // TODO: Fix the crashing issue
     
     let TAG = "LoginViewController"
     let ADMIN = "tillchen417@gmail.com"

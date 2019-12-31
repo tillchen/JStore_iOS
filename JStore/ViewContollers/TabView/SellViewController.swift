@@ -11,6 +11,7 @@ import Firebase
 
 class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
+    let TAG = "SellViewController"
     let CATEGORY_PICKER = 0
     let CONDITION_PICKER = 1
     let mCategories = ["Apparel, Shoes & Watches", "Automotive, Motorcycle & Industrial", "Beauty & Health", "Books & Audible", "Electronics & Computers", "Grocery/Food", "Home, Garden, Pets & DIY", "Automotive, Motorcycle & Industrial", "Sports & Outdoors", "Other"]
@@ -33,6 +34,10 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
     
     var mImagePicker: UIImagePickerController!
+    var mFileName: String!
+    var mReadyToFinish: Bool = false
+    var mImageUrl: String = ""
+    var mFileReference: StorageReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +67,14 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mDescriptionTextView.text = "Description:"
         mDescriptionTextView.textColor = UIColor.lightGray
         mDescriptionTextView.delegate = self
+        mProgressBar.isHidden = true
     }
     
     @IBAction func onTakePhotoClicked(_ sender: Any) {
+        if mReadyToFinish {
+            deleteOldPhoto()
+            mReadyToFinish = false
+        }
         mImagePicker = UIImagePickerController()
         mImagePicker.delegate = self
         mImagePicker.sourceType = .camera
@@ -74,14 +84,62 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         mImagePicker.dismiss(animated: true, completion: nil)
         let image = info[.originalImage] as? UIImage
-        print(image?.size as Any)
+        guard let compressedImage = (image?.jpegData(compressionQuality: 0.25)) else {
+            mReadyToFinish = false
+            print("\(TAG) imagePickerController compression failed")
+            showAlert("Sorry. Somethign went wrong. Please try again.")
+            return
+        }
+        let storage = Storage.storage()
+        mFileName = UUID().uuidString
+        mFileReference = storage.reference().child("posts").child(mFileName)
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        let uploadTast = mFileReference.putData(compressedImage, metadata: metadata) { (metadata, error) in
+            guard metadata != nil else {
+                self.mReadyToFinish = false
+                print("\(self.TAG) imagePickerController upload failed \(String(describing: error))")
+                self.showAlert("Sorry. Somethign went wrong. Please try again.")
+                return
+            }
+            self.mFileReference.downloadURL() { (url, error) in
+                self.mImageUrl = url?.absoluteString ?? ""
+                if self.mImageUrl.isEmpty {
+                    self.mReadyToFinish = false
+                    self.showAlert("Sorry. Somethign went wrong. Please try again.")
+                    return
+                }
+                else {
+                    print("\(self.TAG) photo uploaded: \(String(describing: self.mFileName))")
+                    self.mReadyToFinish = true
+                }
+            }
+        }
+        _ = uploadTast.observe(.progress) { snapshot in
+            let percentComplete = Double(snapshot.progress!.completedUnitCount)
+              / Double(snapshot.progress!.totalUnitCount)
+            self.mProgressBar.isHidden = false
+            self.mProgressBar.setProgress(Float(percentComplete), animated: true)
+        }
     }
     
     @IBAction func onAddPhotoClicked(_ sender: Any) {
+        if mReadyToFinish {
+            deleteOldPhoto()
+            mReadyToFinish = false
+        }
         mImagePicker = UIImagePickerController()
         mImagePicker.delegate = self
         mImagePicker.sourceType = .photoLibrary
         present(mImagePicker, animated: true, completion: nil)
+    }
+    
+    func deleteOldPhoto() {
+        mFileReference.delete { error in
+            if let error = error {
+                print("\(self.TAG) deleteOldPhoto error: \(error)")
+            }
+        }
     }
     
     @IBAction func onFinishClicked(_ sender: Any) {
@@ -143,6 +201,14 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         else { // CONDITION_PICKER
             mConditionTextField.text = mConditions[row]
         }
+    }
+    
+    func showAlert(_ content: String) {
+        let alertController = UIAlertController(title: "JStore", message:
+            content, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK!", style: .default))
+
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }
