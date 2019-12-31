@@ -82,6 +82,7 @@
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Add Photo"/>
                                 <connections>
+                                    <action selector="onAddPhotoClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="iOb-0i-7yb"/>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="0gn-rU-XNo"/>
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="jJC-Ad-o3q"/>
                                 </connections>
@@ -96,6 +97,7 @@
                                 <connections>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="fpj-41-GXx"/>
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="F0l-t0-wy7"/>
+                                    <action selector="onTakePhotoClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3Fy-Lr-Jla"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-eC-knq">
@@ -107,7 +109,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbD-Ka-Dtu">
                                 <rect key="frame" x="35" y="498" width="97" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred Payment Options:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5O8-7K-lV5">
                                 <rect key="frame" x="33" y="543" width="212" height="21"/>
@@ -160,6 +162,7 @@
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Finish"/>
                                 <connections>
+                                    <action selector="onFinishClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="PAd-r5-rIq"/>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="tOU-yy-0LO"/>
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="2Ik-sV-jlR"/>
                                 </connections>
@@ -258,9 +261,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sell" id="mki-nI-7vM"/>
                     <connections>
+                        <outlet property="mBankTransferSwitch" destination="R8T-We-dgZ" id="YeB-0C-nfY"/>
+                        <outlet property="mCashSwitch" destination="C3f-pp-wOL" id="lMD-XM-mF3"/>
                         <outlet property="mCategoryTextField" destination="ptm-mm-7pw" id="hSK-h2-G49"/>
                         <outlet property="mConditionTextField" destination="7IE-fe-0RO" id="ge3-Cd-2e8"/>
                         <outlet property="mDescriptionTextView" destination="DbT-2S-VZS" id="hG0-EX-b2r"/>
+                        <outlet property="mMealPlanSwitch" destination="qxq-oa-gLO" id="H2d-5N-izX"/>
+                        <outlet property="mPayPalSwitch" destination="SAH-ze-2w9" id="5Al-76-RPw"/>
+                        <outlet property="mPriceTextField" destination="FbD-Ka-Dtu" id="i6F-ie-r7V"/>
+                        <outlet property="mProgressBar" destination="eb5-PN-IfL" id="i9L-E3-Ec9"/>
                         <outlet property="mTitleTextField" destination="wHe-zG-3FW" id="8Ow-Bn-Gf8"/>
                         <segue destination="gzp-Bh-hWP" kind="show" identifier="AnonymousSell" id="ZIC-Bu-Ya6"/>
                     </connections>

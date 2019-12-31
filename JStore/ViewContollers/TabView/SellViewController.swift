@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 
-class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate{
     
     let CATEGORY_PICKER = 0
     let CONDITION_PICKER = 1
     let mCategories = ["Apparel, Shoes & Watches", "Automotive, Motorcycle & Industrial", "Beauty & Health", "Books & Audible", "Electronics & Computers", "Grocery/Food", "Home, Garden, Pets & DIY", "Automotive, Motorcycle & Industrial", "Sports & Outdoors", "Other"]
     let mConditions = ["New", "Open Box", "Used", "For parts or not working"]
+    let lightGrayInDarkMode = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 0.2)
     
     let mCategoryPicker = UIPickerView()
     let mConditionPicker = UIPickerView()
@@ -23,6 +24,12 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet var mCategoryTextField: UITextField!
     @IBOutlet var mConditionTextField: UITextField!
     @IBOutlet var mDescriptionTextView: UITextView!
+    @IBOutlet var mProgressBar: UIProgressView!
+    @IBOutlet var mPriceTextField: UITextField!
+    @IBOutlet var mCashSwitch: UISwitch!
+    @IBOutlet var mBankTransferSwitch: UISwitch!
+    @IBOutlet var mPayPalSwitch: UISwitch!
+    @IBOutlet var mMealPlanSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +38,13 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         initUI()
 
+    }
+    @IBAction func onTakePhotoClicked(_ sender: Any) {
+    }
+    @IBAction func onAddPhotoClicked(_ sender: Any) {
+    }
+    
+    @IBAction func onFinishClicked(_ sender: Any) {
     }
     
     func initUI() {
@@ -44,13 +58,39 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mConditionTextField.inputView = mConditionPicker
         mCategoryTextField.text = mCategories[0] // default
         mConditionTextField.text = mConditions[0] // default
-        var color = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 0.2)
+        var color = lightGrayInDarkMode
         if traitCollection.userInterfaceStyle == .light {
             color = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 1.0)
         }
         mDescriptionTextView.layer.borderColor = color.cgColor
         mDescriptionTextView.layer.borderWidth = 1
+        mDescriptionTextView.text = "Description:"
+        mDescriptionTextView.textColor = UIColor.lightGray
+        mDescriptionTextView.delegate = self
     }
+    
+    // For the description textView:
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            if traitCollection.userInterfaceStyle == .light {
+                textView.textColor = UIColor.black
+            }
+            else { // dark
+                textView.textColor = UIColor.white
+            }
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Description:"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    // For the pickers:
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
