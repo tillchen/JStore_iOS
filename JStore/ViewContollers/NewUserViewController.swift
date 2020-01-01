@@ -87,7 +87,8 @@ class NewUserViewController: UIViewController {
     func addUserToDB() {
         let db = Firestore.firestore()
         mEmail = (Auth.auth().currentUser?.email)!
-        let user = JStoreUser(fullName: mName, whatsApp: mWhatsApp, phoneNumber: mPrefix + mPhone, email: mEmail, creationDate: nil)
+        let phoneNumber = mPrefix + mPhone
+        let user = JStoreUser(fullName: mName, whatsApp: mWhatsApp, phoneNumber: phoneNumber, email: mEmail, creationDate: nil)
         let data: [String: Any] = [
             "fullName": user.fullName,
             "whatsApp": user.whatsApp,

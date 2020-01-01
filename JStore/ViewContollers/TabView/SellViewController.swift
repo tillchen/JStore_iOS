@@ -17,6 +17,10 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let mCategories = ["Apparel, Shoes & Watches", "Automotive, Motorcycle & Industrial", "Beauty & Health", "Books & Audible", "Electronics & Computers", "Grocery/Food", "Home, Garden, Pets & DIY", "Automotive, Motorcycle & Industrial", "Sports & Outdoors", "Other"]
     let mConditions = ["New", "Open Box", "Used", "For parts or not working"]
     let lightGrayInDarkMode = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 0.2)
+    let CASH = "cash"
+    let BANK_TRANSFER = "bank_transfer"
+    let PAYPAL = "paypal"
+    let MEAL_PLAN = "meal_plan"
     
     let mCategoryPicker = UIPickerView()
     let mConditionPicker = UIPickerView()
@@ -34,10 +38,19 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet var mActivityIndicator: UIActivityIndicatorView!
     
     var mImagePicker: UIImagePickerController!
-    var mFileName: String!
+    var mFileName: String = ""
     var mReadyToFinish: Bool = false
     var mImageUrl: String = ""
     var mFileReference: StorageReference!
+    var mTitle: String = ""
+    var mDescription: String = ""
+    var mPrice: Double?
+    var mCategory: String = ""
+    var mCondition: String = ""
+    var mPaymentOptions: [String] = []
+    var mJStoreUser: JStoreUser!
+    var db: Firestore!
+    var mCriticalError: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +58,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             performSegue(withIdentifier: "AnonymousSell", sender: nil)
         }
         initUI()
+        getJStoreUserFromDB()
     }
     
     func initUI() {
@@ -68,6 +82,27 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mDescriptionTextView.textColor = UIColor.lightGray
         mDescriptionTextView.delegate = self
         mProgressBar.isHidden = true
+    }
+    
+    func getJStoreUserFromDB() {
+        db = Firestore.firestore()
+        let user = Auth.auth().currentUser
+        db.collection("users").document((user?.email)!).getDocument() { (document, error) in
+            if let error = error {
+                self.showAlert("Sorry. You are not in our database. Please sign in again.")
+                print("\(self.TAG) getJStoreUserFromDB error: \(error)")
+                self.mCriticalError = true
+            }
+            else {
+                self.mJStoreUser = JStoreUser(data: (document?.data())!)
+                if self.mJStoreUser == nil {
+                    self.showAlert("Sorry. You are not in our database. Please sign in again.")
+                    print("\(self.TAG) mJStoreUser is nil")
+                    self.mCriticalError = true
+                }
+            }
+        }
+        
     }
     
     @IBAction func onTakePhotoClicked(_ sender: Any) {
@@ -143,10 +178,118 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     @IBAction func onFinishClicked(_ sender: Any) {
-        // TODO: Check the length of textFields and textView
-        // TODO: Handle the format of price
+        
+        if mCriticalError {
+            showAlert("Sorry. There are some critical errors. Please restart the app or sign in again.")
+            return
+        }
+        
+        if mPriceTextField.text!.isEmpty {
+            showAlert("Sorry. Price can't be empty.")
+            return
+        }
+        
+        getAndSetData()
+        if mTitle.isEmpty {
+            showAlert("Sorry. Title can't be empty.")
+            return
+        }
+        if mTitle.count > 50 {
+            showAlert("Sorry. Title can't be longer than 50 characters.")
+            return
+        }
+        if mDescription == "Description:" {
+            showAlert("Sorry. Description can't be empty.")
+            return
+        }
+        if mDescription.count > 300 {
+            showAlert("Sorry. Description can't be more than 300 characters.")
+            return
+        }
+        
+        if mPrice == nil {
+            showAlert("Sorry. Price is invalid.")
+            return
+        }
+        if mPrice == 0 {
+            showAlert("Sorry. Price can't be 0.")
+            return
+        }
+        if mPaymentOptions.count == 0 {
+            showAlert("Sorry. You must choose at least 1 payment option.")
+            return
+        }
+        if !mReadyToFinish {
+            showAlert("Sorry. Some tasks are not finished. Please try again.")
+        }
+        
+        postItem()
     }
     
+    func getAndSetData() { // TODO: Check the length of textFields and textView
+        mTitle = mTitleTextField.text!
+        mDescription = mDescriptionTextView.text!
+        mCategory = mCategoryTextField.text!
+        mCondition = mConditionTextField.text!
+        mPrice = Double(mPriceTextField.text!.replacingOccurrences(of: ",", with: "."))
+        mPrice?.round()
+        if mCashSwitch.isOn && !mPaymentOptions.contains(CASH) {
+            mPaymentOptions.append(CASH)
+        }
+        if mBankTransferSwitch.isOn && !mPaymentOptions.contains(BANK_TRANSFER) {
+            mPaymentOptions.append(BANK_TRANSFER)
+        }
+        if mPayPalSwitch.isOn && !mPaymentOptions.contains(PAYPAL) {
+            mPaymentOptions.append(PAYPAL)
+        }
+        if mMealPlanSwitch.isOn && !mPaymentOptions.contains(MEAL_PLAN) {
+            mPaymentOptions.append(MEAL_PLAN)
+        }
+    }
+    
+    func postItem() {
+        let post = Post(postId: mFileName, sold: false, ownerId: mJStoreUser.email, ownerName: mJStoreUser.fullName, whatsApp: mJStoreUser.whatsApp, phoneNumber: mJStoreUser.phoneNumber, title: mTitle, category: mCategory, condition: mCondition, description: mDescription, imageUrl: mImageUrl, price: mPrice ?? 0, paymentOptions: mPaymentOptions, creationDate: nil, soldDate: nil)
+        let data: [String: Any] = [
+            "postId": post.postId,
+            "sold": post.sold,
+            "ownerId": post.ownerId,
+            "ownerName": post.ownerName,
+            "whatsApp": post.whatsApp,
+            "phoneNumber": post.phoneNumber,
+            "title": post.title,
+            "category": post.category,
+            "condition": post.condition,
+            "description": post.description,
+            "imageUrl": post.imageUrl,
+            "price": post.price,
+            "paymentOptions": post.paymentOptions,
+            "creationDate": post.creationDate as Any,
+            "soldDate": post.soldDate as Any
+        ]
+        mActivityIndicator.startAnimating()
+        db.collection("posts").document(mFileName).setData(data) { err in
+            if err != nil {
+                self.mActivityIndicator.stopAnimating()
+                self.showAlert("Sorry. Please try again.")
+            }
+            else {
+                print("\(self.TAG) postItem succeeded \(self.mFileName)")
+                self.addCreationDate()
+            }
+        }
+    }
+    
+    func addCreationDate() {
+        print("\(TAG) addCreationDate")
+        db.collection("posts").document(mFileName).updateData([
+            "creationDate": FieldValue.serverTimestamp()
+        ]) { err in
+            self.mActivityIndicator.stopAnimating()
+            if err != nil {
+                self.showAlert("Sorry. Please try again.")
+            }
+        }
+    }
 
     
     // For the description textView:

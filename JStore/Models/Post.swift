@@ -9,19 +9,19 @@
 import Foundation
 
 public struct Post: Codable {
-    let postId: String
-    let sold: Bool
-    let ownerId: String // email address
-    let ownerName: String
-    let whatsApp: Bool
-    let phoneNumber: String
-    let title: String
-    let category: String
-    let condition: String
-    let description: String
-    let imageUrl: String
-    let price: Double
-    let paymentOptions: [String]
-    let creationDate: Date?
-    let soldDate: Date?
+    var postId: String
+    var sold: Bool
+    var ownerId: String // email address
+    var ownerName: String
+    var whatsApp: Bool
+    var phoneNumber: String
+    var title: String
+    var category: String
+    var condition: String
+    var description: String
+    var imageUrl: String
+    var price: Double
+    var paymentOptions: [String]
+    var creationDate: Date?
+    var soldDate: Date?
 }
