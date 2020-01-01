@@ -51,6 +51,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var mJStoreUser: JStoreUser!
     var db: Firestore!
     var mCriticalError: Bool = false
+    var mImageUploaded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,6 +147,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 }
                 else {
                     print("\(self.TAG) photo uploaded: \(String(describing: self.mFileName))")
+                    self.mImageUploaded = true
                     self.mReadyToFinish = true
                 }
             }
@@ -190,6 +192,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         
         getAndSetData()
+        
         if mTitle.isEmpty {
             showAlert("Sorry. Title can't be empty.")
             return
@@ -219,8 +222,13 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             showAlert("Sorry. You must choose at least 1 payment option.")
             return
         }
+        if !mImageUploaded {
+            showAlert("Sorry. You must upload a photo.")
+            return
+        }
         if !mReadyToFinish {
             showAlert("Sorry. Some tasks are not finished. Please try again.")
+            return
         }
         
         postItem()
@@ -288,7 +296,26 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if err != nil {
                 self.showAlert("Sorry. Please try again.")
             }
+            else {
+                self.showAlert("Posted!")
+                self.clearFields()
+            }
         }
+    }
+    
+    func clearFields() {
+        mTitleTextField.text = ""
+        mCategoryTextField.text = mCategories[0]
+        mConditionTextField.text = mConditions[0]
+        mDescriptionTextView.text = ""
+        mProgressBar.isHidden = true
+        mPriceTextField.text = ""
+        mCashSwitch.isOn = false
+        mBankTransferSwitch.isOn = false
+        mPayPalSwitch.isOn = false
+        mMealPlanSwitch.isOn = false
+        mReadyToFinish = false
+        mImageUploaded = false
     }
 
     
