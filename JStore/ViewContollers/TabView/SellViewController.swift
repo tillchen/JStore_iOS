@@ -265,33 +265,14 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func postItem() {
         let post = Post(postId: mFileName, sold: false, ownerId: mJStoreUser.email, ownerName: mJStoreUser.fullName, whatsApp: mJStoreUser.whatsApp, phoneNumber: mJStoreUser.phoneNumber, title: mTitle, category: mCategory, condition: mCondition, description: mDescription, imageUrl: mImageUrl, price: mPrice ?? 0, paymentOptions: mPaymentOptions, creationDate: nil, soldDate: nil)
-        let data: [String: Any] = [
-            "postId": post.postId,
-            "sold": post.sold,
-            "ownerId": post.ownerId,
-            "ownerName": post.ownerName,
-            "whatsApp": post.whatsApp,
-            "phoneNumber": post.phoneNumber,
-            "title": post.title,
-            "category": post.category,
-            "condition": post.condition,
-            "description": post.description,
-            "imageUrl": post.imageUrl,
-            "price": post.price,
-            "paymentOptions": post.paymentOptions,
-            "creationDate": post.creationDate as Any,
-            "soldDate": post.soldDate as Any
-        ]
         mActivityIndicator.startAnimating()
-        db.collection("posts").document(mFileName).setData(data) { err in
-            if err != nil {
-                self.mActivityIndicator.stopAnimating()
-                self.showAlert("Sorry. Please try again.")
-            }
-            else {
-                print("\(self.TAG) postItem succeeded \(self.mFileName)")
-                self.addCreationDate()
-            }
+        do {
+            try db.collection("posts").document(mFileName).setData(from: post)
+            addCreationDate()
+        } catch let error {
+            print("\(TAG) postItem error: \(error)")
+            mActivityIndicator.stopAnimating()
+            showAlert("Sorry. Please try again.")
         }
     }
     
