@@ -14,14 +14,59 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mea-Pz-m1s">
+                                <rect key="frame" x="0.0" y="180" width="414" height="633"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.tilchen.PostTableViewCell" id="FU2-pT-Chh" customClass="PostTableViewCell" customModule="JStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FU2-pT-Chh" id="AXh-6y-ycm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M97-rG-aiQ">
+                                <rect key="frame" x="114" y="146" width="293" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6Tj-Qa-izg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJi-Cv-INj">
+                                <rect key="frame" x="9" y="146" width="97" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M97-rG-aiQ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="58" id="1tY-hp-IQz"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VJi-Cv-INj" secondAttribute="trailing" constant="308" id="4YV-tO-xkf"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="M97-rG-aiQ" secondAttribute="trailing" constant="7" id="6Dd-dM-f50"/>
+                            <constraint firstItem="VJi-Cv-INj" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="9" id="FHS-b7-chP"/>
+                            <constraint firstItem="M97-rG-aiQ" firstAttribute="leading" secondItem="VJi-Cv-INj" secondAttribute="trailing" constant="8" id="UwV-Xm-JPw"/>
+                            <constraint firstItem="VJi-Cv-INj" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="58" id="dj0-sL-uib"/>
+                            <constraint firstItem="mea-Pz-m1s" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="dlG-Ov-8a4"/>
+                            <constraint firstItem="mea-Pz-m1s" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="gkx-2U-TzW"/>
+                            <constraint firstItem="mea-Pz-m1s" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="i5b-py-cUV"/>
+                            <constraint firstItem="6Tj-Qa-izg" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="jVa-Kf-X8u"/>
+                            <constraint firstItem="6Tj-Qa-izg" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="sUQ-Hz-CQR"/>
+                            <constraint firstItem="mea-Pz-m1s" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="92" id="saL-8j-hJm"/>
+                            <constraint firstItem="6Tj-Qa-izg" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="vTi-zE-MMo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Buy" id="zkk-5K-OZL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3413" y="-218"/>
+            <point key="canvasLocation" x="3411.594202898551" y="-218.30357142857142"/>
         </scene>
         <!--Sell-->
         <scene sceneID="wg7-f3-ORb">
@@ -797,6 +842,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="e8N-lK-q8o"/>
         <segue reference="SmI-tE-0Sc"/>
-        <segue reference="qA9-Su-iii"/>
+        <segue reference="FGJ-eo-Cuv"/>
     </inferredMetricsTieBreakers>
 </document>

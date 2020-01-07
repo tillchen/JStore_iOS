@@ -18,6 +18,8 @@ target 'JStore' do
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'
   pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseUI/Firestore', '~> 8.0'
+  pod 'FirebaseUI/Storage', '~> 8.0'
 
   target 'JStoreTests' do
     inherit! :search_paths
