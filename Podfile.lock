@@ -267,8 +267,6 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI/Firestore (8.4.0):
-    - Firebase/Firestore
   - FirebaseUI/Storage (8.4.0):
     - Firebase/Storage (~> 6.0)
     - SDWebImage (~> 5.0)
@@ -344,7 +342,6 @@ DEPENDENCIES:
   - Firebase/Performance
   - Firebase/Storage
   - FirebaseFirestoreSwift
-  - FirebaseUI/Firestore (~> 8.0)
   - FirebaseUI/Storage (~> 8.0)
 
 SPEC REPOS:
@@ -418,6 +415,6 @@ SPEC CHECKSUMS:
   Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
   SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
 
-PODFILE CHECKSUM: 6976a1cb98220dd57a39de994b37b203d0e34d32
+PODFILE CHECKSUM: 1275e977699b71400445d28116dcc1147cc8b201
 
 COCOAPODS: 1.8.4
