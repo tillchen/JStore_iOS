@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestoreSwift
 
 class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
@@ -89,21 +90,28 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         db = Firestore.firestore()
         let user = Auth.auth().currentUser
         db.collection("users").document((user?.email)!).getDocument() { (document, error) in
-            if let error = error {
-                self.showAlert("Sorry. You are not in our database. Please sign in again.")
-                print("\(self.TAG) getJStoreUserFromDB error: \(error)")
-                self.mCriticalError = true
+            let result = Result {
+                try document.flatMap() {
+                    try $0.data(as: JStoreUser.self)
+                }
             }
-            else {
-                self.mJStoreUser = JStoreUser(data: (document?.data())!)
-                if self.mJStoreUser == nil {
+            switch result {
+            case .success(let JUser):
+                if JUser == nil {
                     self.showAlert("Sorry. You are not in our database. Please sign in again.")
                     print("\(self.TAG) mJStoreUser is nil")
                     self.mCriticalError = true
                 }
+                else {
+                    self.mJStoreUser = JUser
+                    self.mCriticalError = false
+                }
+            case .failure(let error):
+                print("\(self.TAG) error decoding JStoreUser \(error)")
+                self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
+                self.mCriticalError = true
             }
         }
-        
     }
     
     @IBAction func onTakePhotoClicked(_ sender: Any) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestoreSwift
 
 class NewUserViewController: UIViewController {
     
@@ -89,22 +90,14 @@ class NewUserViewController: UIViewController {
         mEmail = (Auth.auth().currentUser?.email)!
         let phoneNumber = mPrefix + mPhone
         let user = JStoreUser(fullName: mName, whatsApp: mWhatsApp, phoneNumber: phoneNumber, email: mEmail, creationDate: nil)
-        let data: [String: Any] = [
-            "fullName": user.fullName,
-            "whatsApp": user.whatsApp,
-            "phoneNumber": user.phoneNumber,
-            "email": user.email,
-            "creationDate": user.creationDate as Any
-        ]
         mActivityIndicator.startAnimating()
-        db.collection("users").document(mEmail).setData(data) { err in
-            if err != nil {
-                self.mActivityIndicator.stopAnimating()
-                self.showAlert("Sorry. Please try again.")
-            }
-            else {
-                self.addCreationDate()
-            }
+        do {
+            try db.collection("users").document(mEmail).setData(from: user)
+            self.addCreationDate()
+        } catch let error {
+            print("\(TAG) addUserToDB error: \(error)")
+            mActivityIndicator.stopAnimating()
+            self.showAlert("Sorry. Please try again.")
         }
     }
     

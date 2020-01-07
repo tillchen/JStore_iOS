@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Post: Codable {
+public struct Post: Codable { // TODO: Add the init for data: [String: Any]
     var postId: String
     var sold: Bool
     var ownerId: String // email address
