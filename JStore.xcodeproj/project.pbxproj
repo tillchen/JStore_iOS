@@ -29,6 +29,7 @@
 		FC68919D2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
 		FC69D87223B125F10008610A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69D87123B125F10008610A /* LoginViewController.swift */; };
 		FCB84C022399889F00124005 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB84C012399889F00124005 /* MeViewController.swift */; };
+		FCDD446123C67844003BBE06 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC88891D23C670DE00F41130 /* PostDetailsViewController.swift */; };
 		FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E523B51A5E0049187D /* SceneDelegate.swift */; };
 		FCF434E823B550240049187D /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E723B550240049187D /* RootNavigationController.swift */; };
 		FCF6BB8A23BB9C28003C911A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6BB8923BB9C28003C911A /* Post.swift */; };
@@ -84,6 +85,7 @@
 		FC68918A23994BF6004B41F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC68919A2399641F004B41F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC69D87123B125F10008610A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FC88891D23C670DE00F41130 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JStore.entitlements; sourceTree = "<group>"; };
 		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		FCF434E523B51A5E0049187D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				FCB84C012399889F00124005 /* MeViewController.swift */,
 				FC38169F23B9538600325162 /* AnonymousSellViewController.swift */,
 				FC3816A123B9576900325162 /* AnonymousMeViewController.swift */,
+				FC88891D23C670DE00F41130 /* PostDetailsViewController.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDD446123C67844003BBE06 /* PostDetailsViewController.swift in Sources */,
 				FC3816A023B9538600325162 /* AnonymousSellViewController.swift in Sources */,
 				FC38169523B9051300325162 /* UIViewExtension.swift in Sources */,
 				FCF9268B23C4DCA600DF5058 /* PostTableViewCell.swift in Sources */,

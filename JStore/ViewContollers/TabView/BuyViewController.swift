@@ -21,6 +21,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var mQuery: Query!
     var mLastDocumentSnapShot: DocumentSnapshot!
     var mFetchMore = true
+    var mPostID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,10 +102,20 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mPostID = mPosts[indexPath.row].postId
+        performSegue(withIdentifier: "PostDetails", sender: nil)
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == mPosts.count-1 { // load more data
             loadData()
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = segue.destination as! PostDetailsViewController
+        viewController.mPostID = mPostID
     }
     
     func showAlert(_ content: String) {
