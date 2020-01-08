@@ -11,7 +11,7 @@ import UIKit
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet var mImage: UIImageView!
-    @IBOutlet var mTitle: UITextView!
+    @IBOutlet var mTitle: UILabel!
     @IBOutlet var mSeller: UILabel!
     @IBOutlet var mPrice: UILabel!
     @IBOutlet var mCategory: UILabel!

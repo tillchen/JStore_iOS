@@ -88,11 +88,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("\(TAG) cellForRowAt \(indexPath.row) for \(mPosts.count)")
         let cell = mTableView.dequeueReusableCell(withIdentifier: "com.tilchen.PostTableViewCell", for: indexPath) as! PostTableViewCell
-        print("\(TAG) cellForRowAt \(indexPath.row) after the cell")
         let post = mPosts[indexPath.row]
-        print("\(TAG) cellForRowAt \(indexPath.row) \(post)")
         cell.mImage.sd_setImage(with: Storage.storage().reference(forURL: post.imageUrl))
         cell.mTitle.text = post.title
         cell.mSeller.text = "by " + post.ownerName
@@ -100,7 +97,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.mCategory.text = post.category
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd HH:mm:ss yyyy"
-        cell.mDate.text = dateFormatter.string(from: post.creationDate!)
+        cell.mDate.text = "Posted at " + dateFormatter.string(from: post.creationDate!)
         return cell
     }
     
