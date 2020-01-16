@@ -402,6 +402,21 @@
                     <navigationItem key="navigationItem" id="Zqn-6X-k6A"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mCategoryLabel" destination="0eD-mp-5rM" id="fcS-ef-pdT"/>
+                        <outlet property="mConditionLabel" destination="s4m-R9-il9" id="zMV-jp-m19"/>
+                        <outlet property="mDescriptionTextView" destination="msw-db-CXK" id="vJd-ru-jth"/>
+                        <outlet property="mEmailLabel" destination="xiv-6u-DJJ" id="fIz-YN-i4j"/>
+                        <outlet property="mImageView" destination="khU-Tf-ozm" id="nAg-Ka-q0t"/>
+                        <outlet property="mOwnerNameLabel" destination="yxP-sU-tHc" id="xnf-U6-gch"/>
+                        <outlet property="mPaymentOptionsLabel" destination="Aqo-Ni-pX1" id="Rfd-gs-wa7"/>
+                        <outlet property="mPostDateLabel" destination="lCE-8i-19u" id="i34-oR-4GX"/>
+                        <outlet property="mPriceLabel" destination="fI1-q9-Z0c" id="oOt-nD-JBE"/>
+                        <outlet property="mSendEmailButton" destination="5p4-j5-E9v" id="9v5-K0-8bq"/>
+                        <outlet property="mSoldDateLabel" destination="Y7V-vl-0hk" id="X2z-gs-Yld"/>
+                        <outlet property="mTextOnWhatsAppButton" destination="wBq-vr-X4r" id="iuj-R2-Nev"/>
+                        <outlet property="mTitleLabel" destination="vLU-mC-Do1" id="z2U-ve-Oah"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pa3-Uk-CQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
