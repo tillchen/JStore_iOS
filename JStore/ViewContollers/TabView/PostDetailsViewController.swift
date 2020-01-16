@@ -55,6 +55,7 @@ class PostDetailsViewController: UIViewController {
     }
     
     func setData() {
+        mTitleLabel.text = mPost.title
         mImageView.sd_setImage(with: Storage.storage().reference(forURL: mPost.imageUrl))
         mPriceLabel.text = "€ " + String(mPost.price)
         mOwnerNameLabel.text = mPost.ownerName
