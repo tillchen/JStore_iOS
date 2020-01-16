@@ -133,17 +133,22 @@ class PostDetailsViewController: UIViewController {
     }
     
     func sendEmail() {
-        
+        var message = "Dear " + mPost.ownerName + ",\n\n Hi! I'm contacting you by clicking on the" +
+        " Email button of JStore. I'm interested in the following item:\nhttps://jstore.xyz/posts/" +
+        mPost.postId + "\n\nSincerely,\n\n"
+        message += (mUser.isAnonymous ? "" : mJStoreUser.fullName)
+        let uri = "ms-outlook://compose?to=" + mPost.ownerId + "&subject=" + "[JStore] " + mPost.title + "&body=" + message
+        if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func sendWhatsAppMessage() {
-        print("\(TAG) sendWhatsAppMessage")
         let message = "[JStore] " + mPost.title + "\n\nHi! I'm contacting you by clicking on the " +
         "WhatsApp button of JStore. My name is " + (mUser.isAnonymous ? "" : mJStoreUser.fullName) +
         " and I'm interested in the following item:\nhttps://jstore.xyz/posts/" + mPost.postId
         let uri = "https://wa.me/" + mPost.phoneNumber + "?text=" + message
         if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-            print("\(TAG) sendWhatsAppMessage entered if")
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
