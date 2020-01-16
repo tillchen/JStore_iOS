@@ -139,7 +139,12 @@ class PostDetailsViewController: UIViewController {
         message += (mUser.isAnonymous ? "" : mJStoreUser.fullName)
         let uri = "ms-outlook://compose?to=" + mPost.ownerId + "&subject=" + "[JStore] " + mPost.title + "&body=" + message
         if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            else {
+                showAlert("Sorry. You'll need to install the Outlook app.")
+            }
         }
     }
     
