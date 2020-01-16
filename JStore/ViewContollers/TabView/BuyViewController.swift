@@ -35,6 +35,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     func loadData() {
         if !mFetchMore {
             return
