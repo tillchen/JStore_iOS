@@ -304,6 +304,7 @@
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Send Email"/>
                                 <connections>
+                                    <action selector="onSendEmailClicked:" destination="Dvg-gE-VDJ" eventType="touchUpInside" id="hWI-33-laK"/>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="4wP-YH-7Af"/>
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="CxM-Ih-f2n"/>
                                 </connections>
@@ -315,6 +316,7 @@
                                 <connections>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="PG8-p1-UcG"/>
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="n7O-1F-hCe"/>
+                                    <action selector="onTextOnWhatsAppClicked:" destination="Dvg-gE-VDJ" eventType="touchUpInside" id="Tqf-eo-mBz"/>
                                 </connections>
                             </button>
                         </subviews>

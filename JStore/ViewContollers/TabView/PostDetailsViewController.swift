@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
+import MessageUI
 
 class PostDetailsViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class PostDetailsViewController: UIViewController {
     
     var db: Firestore!
     var mPost: Post!
+    var mJStoreUser: JStoreUser!
+    var mUser: User!
 
     @IBOutlet var mImageView: UIImageView!
     @IBOutlet var mTitleLabel: UILabel!
@@ -42,7 +45,19 @@ class PostDetailsViewController: UIViewController {
         
         setData()
         
+        getJStoreUserFromDB()
+        
     }
+    
+    @IBAction func onSendEmailClicked(_ sender: Any) {
+        sendEmail()
+    }
+    
+    
+    @IBAction func onTextOnWhatsAppClicked(_ sender: Any) {
+        sendWhatsAppMessage()
+    }
+    
     
     func initUI() {
         navigationController?.navigationBar.isHidden = true
@@ -91,6 +106,46 @@ class PostDetailsViewController: UIViewController {
             paymentString += "Meal Plan"
         }
         mPaymentOptionsLabel.text = paymentString
+    }
+    
+    func getJStoreUserFromDB() {
+        mUser = Auth.auth().currentUser
+        db.collection("users").document((mUser?.email)!).getDocument() { (document, error) in
+            let result = Result {
+                try document.flatMap() {
+                    try $0.data(as: JStoreUser.self)
+                }
+            }
+            switch result {
+            case .success(let JUser):
+                if JUser == nil {
+                    self.showAlert("Sorry. You are not in our database. Please sign in again.")
+                    print("\(self.TAG) mJStoreUser is nil")
+                }
+                else {
+                    self.mJStoreUser = JUser
+                }
+            case .failure(let error):
+                print("\(self.TAG) error decoding JStoreUser \(error)")
+                self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
+            }
+        }
+    }
+    
+    func sendEmail() {
+        
+    }
+    
+    func sendWhatsAppMessage() {
+        print("\(TAG) sendWhatsAppMessage")
+        let message = "[JStore] " + mPost.title + "\n\nHi! I'm contacting you by clicking on the " +
+        "WhatsApp button of JStore. My name is " + (mUser.isAnonymous ? "" : mJStoreUser.fullName) +
+        " and I'm interested in the following item:\nhttps://jstore.xyz/posts/" + mPost.postId
+        let uri = "https://wa.me/" + mPost.phoneNumber + "?text=" + message
+        if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            print("\(TAG) sendWhatsAppMessage entered if")
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func showAlert(_ content: String) {
