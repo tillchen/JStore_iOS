@@ -16,7 +16,6 @@ class PostDetailsViewController: UIViewController {
     let TAG = "PostDetailsViewController"
     let lightGrayInDarkMode = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 0.2)
     
-    var mPostID: String!
     var db: Firestore!
     var mPost: Post!
 
@@ -41,6 +40,8 @@ class PostDetailsViewController: UIViewController {
         
         db = Firestore.firestore()
         
+        setData()
+        
     }
     
     func initUI() {
@@ -53,27 +54,42 @@ class PostDetailsViewController: UIViewController {
         mDescriptionTextView.layer.borderWidth = 1
     }
     
-    func getPostFromDB() {
-        db.collection("posts").document(mPostID).getDocument() { (document, error) in
-            let result = Result {
-                try document.flatMap() {
-                    try $0.data(as: Post.self)
-                }
-            }
-            switch result {
-            case .success(let post):
-                if post == nil {
-                    self.showAlert("Sorry. The post is no longer in the database.")
-                    print("\(self.TAG) post is nil")
-                }
-                else {
-                    self.mPost = post
-                }
-            case .failure(let error):
-                print("\(self.TAG) error decoding post \(error)")
-                self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
-            }
+    func setData() {
+        mImageView.sd_setImage(with: Storage.storage().reference(forURL: mPost.imageUrl))
+        mPriceLabel.text = "€ " + String(mPost.price)
+        mOwnerNameLabel.text = mPost.ownerName
+        mEmailLabel.text = mPost.ownerId
+        mCategoryLabel.text = mPost.category
+        mConditionLabel.text = mPost.condition
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd HH:mm:ss yyyy"
+        mPostDateLabel.text = dateFormatter.string(from: mPost.creationDate!)
+        if mPost.sold {
+            mSoldDateLabel.text = dateFormatter.string(from: mPost.soldDate!)
         }
+        else {
+            mSoldDateLabel.text = "Unsold"
+        }
+        mDescriptionTextView.text = mPost.description
+        setPaymentOptions()
+    }
+    
+    func setPaymentOptions() {
+        let paymentOptions = mPost.paymentOptions
+        var paymentString = ""
+        if paymentOptions.contains("cash") {
+            paymentString += "Cash    "
+        }
+        if paymentOptions.contains("bank_transfer") {
+            paymentString += "Bank Transfer    "
+        }
+        if paymentOptions.contains("paypal") {
+            paymentString += "PayPal    "
+        }
+        if paymentOptions.contains("meal_plan") {
+            paymentString += "Meal Plan"
+        }
+        mPaymentOptionsLabel.text = paymentString
     }
     
     func showAlert(_ content: String) {

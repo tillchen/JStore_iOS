@@ -21,7 +21,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var mQuery: Query!
     var mLastDocumentSnapShot: DocumentSnapshot!
     var mFetchMore = true
-    var mPostID: String!
+    var mPost: Post!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +108,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mPostID = mPosts[indexPath.row].postId
+        mPost = mPosts[indexPath.row]
         performSegue(withIdentifier: "PostDetails", sender: nil)
     }
     
@@ -120,7 +120,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! PostDetailsViewController
-        viewController.mPostID = mPostID
+        viewController.mPost = mPost
     }
     
     func showAlert(_ content: String) {
