@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
-import MessageUI
 
 class PostDetailsViewController: UIViewController {
     
@@ -206,7 +205,32 @@ class PostDetailsViewController: UIViewController {
     }
     
     func deletePost() {
-        
+        let alert = UIAlertController(title: "Delete Post", message: "Are you sure you want to delete this post? This action is irreversible", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { _ in
+            return
+        }))
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { _ in
+            // update
+            self.mActivityIndicatorView.startAnimating()
+            self.db.collection("posts").document(self.mPost.postId).delete() { err in
+                if err != nil {
+                    self.mActivityIndicatorView.stopAnimating()
+                    self.showAlert("Sorry. Please try again.")
+                }
+                else {
+                    Storage.storage().reference(withPath: "posts").child(self.mPost.postId).delete { error in
+                        self.mActivityIndicatorView.stopAnimating()
+                        if error != nil {
+                            self.showAlert("Sorry. Please try again.")
+                        }
+                        else {
+                            self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
+                        }
+                    }
+                }
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert(_ content: String) {
