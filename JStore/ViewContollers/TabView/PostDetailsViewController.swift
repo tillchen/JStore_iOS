@@ -81,6 +81,12 @@ class PostDetailsViewController: UIViewController {
         if mPost.ownerId == mUser.email { // owner
             mSendEmailButton.setTitle("Mark As Sold", for: .normal)
             mTextOnWhatsAppButton.setTitle("Delete Post", for: .normal)
+            if mPost.sold {
+                mSendEmailButton.isEnabled = false
+            }
+            else {
+                mSendEmailButton.isEnabled = false
+            }
         }
         else {
             if !mPost.whatsApp {
@@ -186,7 +192,6 @@ class PostDetailsViewController: UIViewController {
             return
         }))
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { _ in
-            // update
             self.mActivityIndicatorView.startAnimating()
             self.db.collection("posts").document(self.mPost.postId).updateData([
                 "sold": true,
@@ -210,7 +215,6 @@ class PostDetailsViewController: UIViewController {
             return
         }))
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { _ in
-            // update
             self.mActivityIndicatorView.startAnimating()
             self.db.collection("posts").document(self.mPost.postId).delete() { err in
                 if err != nil {
