@@ -319,6 +319,9 @@
                                     <action selector="onTextOnWhatsAppClicked:" destination="Dvg-gE-VDJ" eventType="touchUpInside" id="Tqf-eo-mBz"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-k4-88u">
+                                <rect key="frame" x="197" y="78" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -387,6 +390,7 @@
                             <constraint firstItem="Sdi-2K-O5V" firstAttribute="leading" secondItem="Wkl-ea-RSq" secondAttribute="leading" constant="27" id="mhz-JC-dc1"/>
                             <constraint firstItem="iby-Jw-M4D" firstAttribute="top" secondItem="Yti-cw-3Xg" secondAttribute="bottom" constant="7" id="o5L-Cq-BSf"/>
                             <constraint firstItem="vLU-mC-Do1" firstAttribute="leading" secondItem="Wkl-ea-RSq" secondAttribute="leading" constant="27" id="pOr-40-cdA"/>
+                            <constraint firstItem="khU-Tf-ozm" firstAttribute="top" secondItem="Gee-k4-88u" secondAttribute="bottom" constant="-47" id="qFG-O9-Lbo"/>
                             <constraint firstItem="Wkl-ea-RSq" firstAttribute="trailing" secondItem="R68-cf-4m9" secondAttribute="trailing" constant="179" id="rX3-Rj-LWf"/>
                             <constraint firstItem="s4m-R9-il9" firstAttribute="top" secondItem="iby-Jw-M4D" secondAttribute="top" id="s1D-uk-h7L"/>
                             <constraint firstItem="yxP-sU-tHc" firstAttribute="top" secondItem="uDf-Gk-XaE" secondAttribute="top" id="w70-M7-DTg"/>
@@ -396,6 +400,7 @@
                             <constraint firstItem="Wkl-ea-RSq" firstAttribute="trailing" secondItem="Sdi-2K-O5V" secondAttribute="trailing" constant="27" id="x6p-Pe-04j"/>
                             <constraint firstItem="zDS-3C-zpO" firstAttribute="top" secondItem="uDf-Gk-XaE" secondAttribute="bottom" constant="7" id="xYe-Az-ocE"/>
                             <constraint firstItem="Wkl-ea-RSq" firstAttribute="trailing" secondItem="iby-Jw-M4D" secondAttribute="trailing" constant="308" id="yGu-mp-eTg"/>
+                            <constraint firstItem="Gee-k4-88u" firstAttribute="centerX" secondItem="khU-Tf-ozm" secondAttribute="centerX" id="za5-wk-Mox"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wkl-ea-RSq"/>
                     </view>
@@ -403,6 +408,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="mActivityIndicatorView" destination="Gee-k4-88u" id="hE4-AO-ORR"/>
                         <outlet property="mCategoryLabel" destination="0eD-mp-5rM" id="fcS-ef-pdT"/>
                         <outlet property="mConditionLabel" destination="s4m-R9-il9" id="zMV-jp-m19"/>
                         <outlet property="mDescriptionTextView" destination="msw-db-CXK" id="vJd-ru-jth"/>
@@ -416,9 +422,11 @@
                         <outlet property="mSoldDateLabel" destination="Y7V-vl-0hk" id="X2z-gs-Yld"/>
                         <outlet property="mTextOnWhatsAppButton" destination="wBq-vr-X4r" id="iuj-R2-Nev"/>
                         <outlet property="mTitleLabel" destination="vLU-mC-Do1" id="z2U-ve-Oah"/>
+                        <segue destination="zkw-rz-GNm" kind="unwind" identifier="unwindToBuy" unwindAction="unwindToBuyWithSegue:" id="3wB-gj-XdH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pa3-Uk-CQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zkw-rz-GNm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4124.6376811594209" y="-218.30357142857142"/>
         </scene>

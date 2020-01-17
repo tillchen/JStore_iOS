@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource { // TODO: Add scroll to refresh
     
     let TAG = "BuyViewController"
 
@@ -121,6 +121,10 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! PostDetailsViewController
         viewController.mPost = mPost
+    }
+    
+    @IBAction func unwindToBuy(segue: UIStoryboardSegue) {
+        // nothing
     }
     
     func showAlert(_ content: String) {

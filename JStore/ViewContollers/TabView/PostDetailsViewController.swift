@@ -35,6 +35,7 @@ class PostDetailsViewController: UIViewController {
     @IBOutlet var mPaymentOptionsLabel: UILabel!
     @IBOutlet var mSendEmailButton: UIButton!
     @IBOutlet var mTextOnWhatsAppButton: UIButton!
+    @IBOutlet var mActivityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +51,22 @@ class PostDetailsViewController: UIViewController {
     }
     
     @IBAction func onSendEmailClicked(_ sender: Any) {
-        sendEmail()
+        if mPost.ownerId == mUser.email { // owner, mark as sold
+            markAsSold()
+        }
+        else {
+            sendEmail()
+        }
     }
     
     
     @IBAction func onTextOnWhatsAppClicked(_ sender: Any) {
-        sendWhatsAppMessage()
+        if mPost.ownerId == mUser.email { // owner, delete post
+            deletePost()
+        }
+        else {
+            sendWhatsAppMessage()
+        }
     }
     
     
@@ -67,6 +78,19 @@ class PostDetailsViewController: UIViewController {
         }
         mDescriptionTextView.layer.borderColor = color.cgColor
         mDescriptionTextView.layer.borderWidth = 1
+        mUser = Auth.auth().currentUser
+        if mPost.ownerId == mUser.email { // owner
+            mSendEmailButton.setTitle("Mark As Sold", for: .normal)
+            mTextOnWhatsAppButton.setTitle("Delete Post", for: .normal)
+        }
+        else {
+            if !mPost.whatsApp {
+                mTextOnWhatsAppButton.isHidden = true
+            }
+            else {
+                mTextOnWhatsAppButton.isHidden = false
+            }
+        }
     }
     
     func setData() {
@@ -109,7 +133,6 @@ class PostDetailsViewController: UIViewController {
     }
     
     func getJStoreUserFromDB() {
-        mUser = Auth.auth().currentUser
         db.collection("users").document((mUser?.email)!).getDocument() { (document, error) in
             let result = Result {
                 try document.flatMap() {
@@ -156,6 +179,34 @@ class PostDetailsViewController: UIViewController {
         if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    func markAsSold() {
+        let alert = UIAlertController(title: "Mark As Sold", message: "Are you sure you want to mark this item as sold?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { _ in
+            return
+        }))
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { _ in
+            // update
+            self.mActivityIndicatorView.startAnimating()
+            self.db.collection("posts").document(self.mPost.postId).updateData([
+                "sold": true,
+                "soldDate": FieldValue.serverTimestamp()
+            ]) { err in
+                self.mActivityIndicatorView.stopAnimating()
+                if err != nil {
+                    self.showAlert("Sorry. Please try again.")
+                }
+                else {
+                    self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
+                }
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deletePost() {
+        
     }
     
     func showAlert(_ content: String) {
