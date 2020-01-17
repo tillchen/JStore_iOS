@@ -733,9 +733,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-yQ-2uW">
-                                <rect key="frame" x="177" y="433" width="60" height="30"/>
-                                <state key="normal" title="Sign Out"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-yQ-2uW">
+                                <rect key="frame" x="35" y="595" width="98" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onSignOutClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="uTC-4z-nue"/>
                                 </connections>
@@ -806,16 +810,28 @@
                                 <rect key="frame" x="141" y="262" width="37" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yws-fB-5zt">
+                                <rect key="frame" x="0.0" y="316" width="414" height="252"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0H-uE-d8N">
+                                <rect key="frame" x="141" y="595" width="98" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Feedback">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSignOutClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="Wmh-6H-YAq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="wOR-6z-Ieq" secondAttribute="trailing" constant="193" id="GBx-IM-DWp"/>
-                            <constraint firstItem="qAc-yQ-2uW" firstAttribute="leading" secondItem="1SZ-Vq-SJJ" secondAttribute="leading" constant="177" id="UVp-W5-1D6"/>
-                            <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="qAc-yQ-2uW" secondAttribute="trailing" constant="177" id="ahf-Re-Baw"/>
                             <constraint firstItem="wOR-6z-Ieq" firstAttribute="leading" secondItem="1SZ-Vq-SJJ" secondAttribute="leading" constant="35" id="cZ1-Ii-qzn"/>
-                            <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="bottom" secondItem="qAc-yQ-2uW" secondAttribute="bottom" constant="350" id="jkM-35-NwT"/>
                             <constraint firstItem="wOR-6z-Ieq" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="26" id="rog-3M-TWB"/>
-                            <constraint firstItem="qAc-yQ-2uW" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="345" id="snu-C3-JRs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1SZ-Vq-SJJ"/>
                     </view>
