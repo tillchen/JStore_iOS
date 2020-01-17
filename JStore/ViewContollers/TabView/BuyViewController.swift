@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import FirebaseFirestoreSwift
 
 class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource { // TODO: Add scroll to refresh
     
@@ -31,6 +32,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         mTableView.dataSource = self
         mTableView.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedPostID), name: Notification.Name("PostIDReceived"), object: nil)
+        
         loadData()
         
     }
@@ -38,6 +41,31 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    @objc func receivedPostID() {
+        let postID = UserDefaults.standard.value(forKey: "postID") as? String
+        db.collection("posts").document(postID!).getDocument() { (document, error) in
+            let result = Result {
+                try document.flatMap() {
+                    try $0.data(as: Post.self)
+                }
+            }
+            switch result {
+            case .success(let JPost):
+                if JPost == nil {
+                    self.showAlert("Sorry. This post is not in the database.")
+                }
+                else {
+                    print("\(self.TAG) receivedPostID success")
+                    self.mPost = JPost
+                    self.performSegue(withIdentifier: "PostDetails", sender: nil)
+                }
+            case .failure(let error):
+                print("\(self.TAG) error decoding post \(error)")
+                self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
+            }
+        }
     }
     
     func loadData() {

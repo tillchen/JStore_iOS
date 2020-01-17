@@ -52,14 +52,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        userActivity.webpageURL.flatMap(handlePasswordlessSignIn)!
+        userActivity.webpageURL.flatMap(handleLinks)!
     }
 
-    func handlePasswordlessSignIn(withURL url: URL) {
+    func handleLinks(withURL url: URL) {
         let link = url.absoluteString
-        if Auth.auth().isSignIn(withEmailLink: link) {
+        if Auth.auth().isSignIn(withEmailLink: link) { // sign in
             UserDefaults.standard.set(link, forKey: LINK)
             NotificationCenter.default.post(name: Notification.Name("LinkReceived"), object: nil)
+        }
+        else { // go to post
+            if link.contains("posts") {
+                let postID = url.lastPathComponent
+                UserDefaults.standard.set(postID, forKey: "postID")
+                NotificationCenter.default.post(name: Notification.Name("PostIDReceived"), object: nil)
+            }
         }
     }
 
