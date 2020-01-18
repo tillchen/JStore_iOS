@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestoreSwift
 
 class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -19,12 +20,15 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet var mLoadActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet var mSaveActivityIndicatorView: UIActivityIndicatorView!
     
+    let TAG = "MeViewController"
     let mImages = [UIImage(systemName: "doc.circle"), UIImage(systemName: "eurosign.circle"), UIImage(systemName: "bell.circle")]
     let mData = ["Active Posts", "Sold Items", "Notification Settings"]
     let WHATSAPP = 0
     let EMAIL = 1
     
     var mWhatsApp: Bool = true
+    var db: Firestore!
+    var mJStoreUser: JStoreUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +37,47 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         mTableView.dataSource = self
         mTableView.delegate = self
+        db = Firestore.firestore()
+        getJStoreUserFromDB()
     }
     
+    func getJStoreUserFromDB() {
+        db.collection("users").document((Auth.auth().currentUser?.email)!).getDocument() { (document, error) in
+            let result = Result {
+                try document.flatMap() {
+                    try $0.data(as: JStoreUser.self)
+                }
+            }
+            switch result {
+            case .success(let JUser):
+                if JUser == nil {
+                    self.showAlert("Sorry. You are not in our database. Please sign in again.")
+                    print("\(self.TAG) mJStoreUser is nil")
+                }
+                else {
+                    self.mJStoreUser = JUser
+                    self.initUI()
+                }
+            case .failure(let error):
+                print("\(self.TAG) error decoding JStoreUser \(error)")
+                self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
+            }
+        }
+    }
+    
+    func initUI() {
+        mFullNameTextField.text = mJStoreUser.fullName
+        if !mJStoreUser.whatsApp {
+            mContactSegmentedControl.selectedSegmentIndex = EMAIL
+        }
+        else {
+            mPhoneTextField.text = mJStoreUser.phoneNumber
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        mDateLabel.text = dateFormatter.string(from: mJStoreUser.creationDate!)
+    }
+
     @IBAction func onContactSegmentedControlChanged(_ sender: Any) {
         switch mContactSegmentedControl.selectedSegmentIndex {
          case WHATSAPP:

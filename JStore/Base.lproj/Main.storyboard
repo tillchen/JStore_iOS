@@ -768,8 +768,7 @@
                                     <segment title="Email"/>
                                 </segments>
                                 <connections>
-                                    <action selector="onContactSegementedControlChanged:" destination="xvc-dH-dun" eventType="valueChanged" id="2BK-fI-6c8"/>
-                                    <action selector="onContactSegmentedControlChanged:" destination="xvc-dH-dun" eventType="valueChanged" id="4b7-ig-geT"/>
+                                    <action selector="onContactSegmentedControlChanged:" destination="xvc-dH-dun" eventType="valueChanged" id="dSg-SU-aMf"/>
                                     <action selector="onSegmentedControlIndexChanged:" destination="geB-JW-XoI" eventType="valueChanged" id="WjB-Ll-0EH"/>
                                 </connections>
                             </segmentedControl>
@@ -941,11 +940,11 @@
             <objects>
                 <viewController id="Ith-np-pdJ" customClass="AnonymousMeViewController" customModule="JStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tbA-bk-NQ5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjX-Mz-RKx">
-                                <rect key="frame" x="141" y="343" width="133" height="117"/>
+                                <rect key="frame" x="141" y="431" width="133" height="34"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign Out"/>
                                 <connections>
