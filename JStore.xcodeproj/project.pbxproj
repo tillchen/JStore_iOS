@@ -29,6 +29,7 @@
 		FC68919D2399641F004B41F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC68919A2399641F004B41F9 /* GoogleService-Info.plist */; };
 		FC69D87223B125F10008610A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69D87123B125F10008610A /* LoginViewController.swift */; };
 		FCB84C022399889F00124005 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB84C012399889F00124005 /* MeViewController.swift */; };
+		FCDC6F9A23D34A190006B9C1 /* MeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDC6F9923D34A190006B9C1 /* MeTableViewCell.swift */; };
 		FCDD446123C67844003BBE06 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC88891D23C670DE00F41130 /* PostDetailsViewController.swift */; };
 		FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E523B51A5E0049187D /* SceneDelegate.swift */; };
 		FCF434E823B550240049187D /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF434E723B550240049187D /* RootNavigationController.swift */; };
@@ -88,6 +89,7 @@
 		FC88891D23C670DE00F41130 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		FC8B9FE123B407BD005D8FA8 /* JStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JStore.entitlements; sourceTree = "<group>"; };
 		FCB84C012399889F00124005 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		FCDC6F9923D34A190006B9C1 /* MeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewCell.swift; sourceTree = "<group>"; };
 		FCF434E523B51A5E0049187D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FCF434E723B550240049187D /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		FCF6BB8923BB9C28003C911A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				FC38169723B90A0A00325162 /* JStoreUser.swift */,
 				FCF6BB8923BB9C28003C911A /* Post.swift */,
 				FCF9268A23C4DCA600DF5058 /* PostTableViewCell.swift */,
+				FCDC6F9923D34A190006B9C1 /* MeTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				FC3816A023B9538600325162 /* AnonymousSellViewController.swift in Sources */,
 				FC38169523B9051300325162 /* UIViewExtension.swift in Sources */,
 				FCF9268B23C4DCA600DF5058 /* PostTableViewCell.swift in Sources */,
+				FCDC6F9A23D34A190006B9C1 /* MeTableViewCell.swift in Sources */,
 				FC69D87223B125F10008610A /* LoginViewController.swift in Sources */,
 				FCF434E623B51A5E0049187D /* SceneDelegate.swift in Sources */,
 				FCB84C022399889F00124005 /* MeViewController.swift in Sources */,
