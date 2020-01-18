@@ -29,6 +29,8 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var mWhatsApp: Bool = true
     var db: Firestore!
     var mJStoreUser: JStoreUser!
+    var mName: String = ""
+    var mPhone: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func getJStoreUserFromDB() {
+        mLoadActivityIndicatorView.startAnimating()
         db.collection("users").document((Auth.auth().currentUser?.email)!).getDocument() { (document, error) in
             let result = Result {
                 try document.flatMap() {
@@ -50,6 +53,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
             switch result {
             case .success(let JUser):
+                self.mLoadActivityIndicatorView.stopAnimating()
                 if JUser == nil {
                     self.showAlert("Sorry. You are not in our database. Please sign in again.")
                     print("\(self.TAG) mJStoreUser is nil")
@@ -59,6 +63,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     self.initUI()
                 }
             case .failure(let error):
+                self.mLoadActivityIndicatorView.stopAnimating()
                 print("\(self.TAG) error decoding JStoreUser \(error)")
                 self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
             }
@@ -69,6 +74,8 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         mFullNameTextField.text = mJStoreUser.fullName
         if !mJStoreUser.whatsApp {
             mContactSegmentedControl.selectedSegmentIndex = EMAIL
+            mPlusSignLabel.isHidden = true
+            mPhoneTextField.isHidden = true
         }
         else {
             mPhoneTextField.text = mJStoreUser.phoneNumber
@@ -95,6 +102,44 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func onSaveClicked(_ sender: Any) {
+        if !checkTextFields() {
+            return
+        }
+        mFullNameTextField.resignFirstResponder()
+        mPhoneTextField.resignFirstResponder()
+        updateUserInfo()
+    }
+    
+    func checkTextFields() -> Bool {
+        mName = mFullNameTextField.text!
+        mPhone = mPhoneTextField.text!
+        if mName.isEmpty {
+            showAlert("Sorry. Your full name can't be empty.")
+            return false
+        }
+        if mWhatsApp && mPhone.isEmpty {
+            showAlert("Sorry. Your phone number can't be empty.")
+            return false
+        }
+        if mWhatsApp && mPhone.contains(" ") {
+            showAlert("Sorry. Please don't contain any space for your phone number.")
+            return false
+        }
+        return true
+    }
+    
+    func updateUserInfo() {
+        mSaveActivityIndicatorView.startAnimating()
+        db.collection("users").document(mJStoreUser.email).updateData([
+            "fullName": mName,
+            "whatsApp": mWhatsApp,
+            "phoneNumber": mPhone
+        ]) { err in
+            self.mSaveActivityIndicatorView.stopAnimating()
+            if err != nil {
+                self.showAlert("Sorry. Please try again.")
+            }
+        }
     }
     
     @IBAction func onSignOutClicked(_ sender: Any) {
