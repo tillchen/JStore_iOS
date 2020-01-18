@@ -16,6 +16,7 @@
 		FC38169823B90A0A00325162 /* JStoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169723B90A0A00325162 /* JStoreUser.swift */; };
 		FC3816A023B9538600325162 /* AnonymousSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38169F23B9538600325162 /* AnonymousSellViewController.swift */; };
 		FC3816A223B9576900325162 /* AnonymousMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3816A123B9576900325162 /* AnonymousMeViewController.swift */; };
+		FC3DDFAD23D3AF6400BE2347 /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3DDFAC23D3AF6300BE2347 /* MyPostsViewController.swift */; };
 		FC68916523994BF4004B41F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916423994BF4004B41F9 /* AppDelegate.swift */; };
 		FC68916923994BF4004B41F9 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916823994BF4004B41F9 /* BuyViewController.swift */; };
 		FC68916B23994BF4004B41F9 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68916A23994BF4004B41F9 /* SellViewController.swift */; };
@@ -70,6 +71,7 @@
 		FC38169723B90A0A00325162 /* JStoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JStoreUser.swift; sourceTree = "<group>"; };
 		FC38169F23B9538600325162 /* AnonymousSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousSellViewController.swift; sourceTree = "<group>"; };
 		FC3816A123B9576900325162 /* AnonymousMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousMeViewController.swift; sourceTree = "<group>"; };
+		FC3DDFAC23D3AF6300BE2347 /* MyPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		FC68916123994BF3004B41F9 /* JStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC68916423994BF4004B41F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC68916823994BF4004B41F9 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				FC38169F23B9538600325162 /* AnonymousSellViewController.swift */,
 				FC3816A123B9576900325162 /* AnonymousMeViewController.swift */,
 				FC88891D23C670DE00F41130 /* PostDetailsViewController.swift */,
+				FC3DDFAC23D3AF6300BE2347 /* MyPostsViewController.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			files = (
 				FCDD446123C67844003BBE06 /* PostDetailsViewController.swift in Sources */,
 				FC3816A023B9538600325162 /* AnonymousSellViewController.swift in Sources */,
+				FC3DDFAD23D3AF6400BE2347 /* MyPostsViewController.swift in Sources */,
 				FC38169523B9051300325162 /* UIViewExtension.swift in Sources */,
 				FCF9268B23C4DCA600DF5058 /* PostTableViewCell.swift in Sources */,
 				FCDC6F9A23D34A190006B9C1 /* MeTableViewCell.swift in Sources */,

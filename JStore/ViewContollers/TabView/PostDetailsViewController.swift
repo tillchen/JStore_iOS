@@ -202,7 +202,12 @@ class PostDetailsViewController: UIViewController {
                     self.showAlert("Sorry. Please try again.")
                 }
                 else {
-                    self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
+                    if (self.presentingViewController as? BuyViewController) != nil {
+                        self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
+                    }
+                    else {
+                        self.performSegue(withIdentifier: "unwindToMyPosts", sender: nil)
+                    }
                 }
             }
         }))

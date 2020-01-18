@@ -25,12 +25,15 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     let mData = ["Active Posts", "Sold Items", "Notification Settings"]
     let WHATSAPP = 0
     let EMAIL = 1
+    let ACTIVE_POSTS = 0
+    let SOLD_ITEMS = 1
     
     var mWhatsApp: Bool = true
     var db: Firestore!
     var mJStoreUser: JStoreUser!
     var mName: String = ""
     var mPhone: String = ""
+    var mActivePosts: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,6 +171,36 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.mImageView.image = mImages[indexPath.row]
         cell.mLabel.text = mData[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < 2 {
+            if indexPath.row == ACTIVE_POSTS {
+                mActivePosts = true
+            }
+            else {
+                mActivePosts = false
+            }
+            performSegue(withIdentifier: "MyPosts", sender: nil)
+        }
+        else {
+            showAlert("Feature coming soon!") // TODO: Add notifications
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? MyPostsViewController {
+            if mActivePosts {
+                viewController.mSold = false
+            }
+            else {
+                viewController.mSold = true
+            }
+            viewController.mOwnerID = mJStoreUser.email
+        }
+        else {
+            // TODO: Add notifications
+        }
     }
     
     func showAlert(_ content: String) {
