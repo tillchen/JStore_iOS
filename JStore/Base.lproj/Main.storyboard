@@ -868,7 +868,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onFeedBackClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="znh-tD-EJz"/>
-                                    <action selector="onSignOutClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="dg2-pE-M98"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ef0-49-DUM">
@@ -1384,6 +1383,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="M5A-Nh-EQy"/>
         <segue reference="SmI-tE-0Sc"/>
-        <segue reference="9ks-8a-xbt"/>
+        <segue reference="qA9-Su-iii"/>
     </inferredMetricsTieBreakers>
 </document>

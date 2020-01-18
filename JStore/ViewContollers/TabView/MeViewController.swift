@@ -154,6 +154,9 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func onFeedBackClicked(_ sender: Any) {
+        if let url = URL(string: "https://forms.gle/NVw8745RsnkWGojp6") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
