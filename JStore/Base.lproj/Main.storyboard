@@ -1466,7 +1466,6 @@
                                             <outlet property="mPrice" destination="tvX-Nr-OAw" id="WUU-cs-FhV"/>
                                             <outlet property="mSeller" destination="0tG-nF-vak" id="eYB-Wx-OKz"/>
                                             <outlet property="mTitle" destination="E5N-JV-bWY" id="9xg-EI-2FG"/>
-                                            <segue destination="Dvg-gE-VDJ" kind="show" identifier="MyPostDetails" id="r3A-Sx-dMK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1484,6 +1483,7 @@
                     <navigationItem key="navigationItem" id="exS-OF-Ps5"/>
                     <connections>
                         <outlet property="mTableView" destination="d62-xy-4iS" id="fjK-g3-7jR"/>
+                        <segue destination="Dvg-gE-VDJ" kind="show" identifier="MyPostDetails" id="N0F-Pk-ANF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nAm-eF-hZk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1501,6 +1501,6 @@
         <segue reference="e8N-lK-q8o"/>
         <segue reference="SmI-tE-0Sc"/>
         <segue reference="qA9-Su-iii"/>
-        <segue reference="r3A-Sx-dMK"/>
+        <segue reference="N0F-Pk-ANF"/>
     </inferredMetricsTieBreakers>
 </document>

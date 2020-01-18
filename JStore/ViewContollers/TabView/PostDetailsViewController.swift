@@ -78,7 +78,7 @@ class PostDetailsViewController: UIViewController {
         mDescriptionTextView.layer.borderColor = color.cgColor
         mDescriptionTextView.layer.borderWidth = 1
         mUser = Auth.auth().currentUser
-        if mPost.ownerId == mUser.email { // owner
+        if !mUser.isAnonymous && mPost.ownerId == mUser.email! { // owner
             mSendEmailButton.setTitle("Mark As Sold", for: .normal)
             mTextOnWhatsAppButton.setTitle("Delete Post", for: .normal)
             if mPost.sold {
