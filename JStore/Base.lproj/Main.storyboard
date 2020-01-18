@@ -768,6 +768,8 @@
                                     <segment title="Email"/>
                                 </segments>
                                 <connections>
+                                    <action selector="onContactSegementedControlChanged:" destination="xvc-dH-dun" eventType="valueChanged" id="2BK-fI-6c8"/>
+                                    <action selector="onContactSegmentedControlChanged:" destination="xvc-dH-dun" eventType="valueChanged" id="4b7-ig-geT"/>
                                     <action selector="onSegmentedControlIndexChanged:" destination="geB-JW-XoI" eventType="valueChanged" id="WjB-Ll-0EH"/>
                                 </connections>
                             </segmentedControl>
@@ -789,6 +791,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="onFinishClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wNi-ly-sxy"/>
+                                    <action selector="onSaveClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="VJC-rj-0HX"/>
                                     <action selector="onSendLinkClicked:" destination="5vG-Hj-Aum" eventType="touchUpInside" id="aTe-d4-iFv"/>
                                     <action selector="onStartClicked:" destination="geB-JW-XoI" eventType="touchUpInside" id="7Is-MA-ghY"/>
                                 </connections>
@@ -859,9 +862,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="onFeedBackClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="znh-tD-EJz"/>
                                     <action selector="onSignOutClicked:" destination="xvc-dH-dun" eventType="touchUpInside" id="dg2-pE-M98"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ef0-49-DUM">
+                                <rect key="frame" x="188.5" y="106" width="37" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="b9x-Jm-2k5"/>
+                                    <constraint firstAttribute="width" constant="37" id="sqU-AR-mQw"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -873,12 +884,14 @@
                             <constraint firstItem="6yZ-pL-vCB" firstAttribute="leading" secondItem="1SZ-Vq-SJJ" secondAttribute="leading" constant="35" id="BOw-YF-b8x"/>
                             <constraint firstItem="3P5-hx-YIh" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="26" id="EI0-OQ-XVy"/>
                             <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="wOR-6z-Ieq" secondAttribute="trailing" constant="193" id="GBx-IM-DWp"/>
+                            <constraint firstItem="Ef0-49-DUM" firstAttribute="top" secondItem="1SZ-Vq-SJJ" secondAttribute="top" constant="18" id="H66-hN-AxV"/>
                             <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="Vpo-lx-XTJ" secondAttribute="trailing" constant="112" id="Jg7-Fg-oSe"/>
                             <constraint firstItem="PWm-RE-0jY" firstAttribute="leading" secondItem="qAc-yQ-2uW" secondAttribute="trailing" constant="16" id="Jpv-zI-2mv"/>
                             <constraint firstItem="1SZ-Vq-SJJ" firstAttribute="trailing" secondItem="sWh-uI-HAA" secondAttribute="trailing" constant="73" id="LAZ-lM-dD8"/>
                             <constraint firstItem="yws-fB-5zt" firstAttribute="trailing" secondItem="1SZ-Vq-SJJ" secondAttribute="trailing" id="NyI-ER-FDw"/>
                             <constraint firstItem="Vpo-lx-XTJ" firstAttribute="leading" secondItem="AjL-q5-D0d" secondAttribute="trailing" constant="4" id="Opy-Ex-Hmi"/>
                             <constraint firstItem="EH6-M4-oET" firstAttribute="top" secondItem="sWh-uI-HAA" secondAttribute="bottom" constant="5" id="PMO-e6-Y8Z"/>
+                            <constraint firstItem="Ef0-49-DUM" firstAttribute="centerX" secondItem="1SZ-Vq-SJJ" secondAttribute="centerX" id="PhQ-1s-W5R"/>
                             <constraint firstItem="KJg-wY-9M9" firstAttribute="leading" secondItem="1SZ-Vq-SJJ" secondAttribute="leading" constant="35" id="QBM-Qo-Gda"/>
                             <constraint firstItem="KJg-wY-9M9" firstAttribute="top" secondItem="wOR-6z-Ieq" secondAttribute="bottom" constant="20" id="Se6-hy-4Ql"/>
                             <constraint firstItem="yws-fB-5zt" firstAttribute="top" secondItem="6yZ-pL-vCB" secondAttribute="bottom" constant="21" id="UPr-3E-HoG"/>
@@ -907,6 +920,13 @@
                     <navigationItem key="navigationItem" title="Me" id="u2I-AC-JxQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="mContactSegmentedControl" destination="EH6-M4-oET" id="xhw-pC-xaN"/>
+                        <outlet property="mDateLabel" destination="sWh-uI-HAA" id="7X2-S2-bBf"/>
+                        <outlet property="mFullNameTextField" destination="wOR-6z-Ieq" id="kcy-VD-0Q3"/>
+                        <outlet property="mLoadActivityIndicatorView" destination="Ef0-49-DUM" id="AYG-g9-S5Q"/>
+                        <outlet property="mPhoneTextField" destination="Vpo-lx-XTJ" id="DC8-1E-mlb"/>
+                        <outlet property="mPlusSignLabel" destination="AjL-q5-D0d" id="Btm-6P-8v1"/>
+                        <outlet property="mSaveActivityIndicatorView" destination="L2V-sQ-G9q" id="ioP-p9-AoO"/>
                         <outlet property="mTableView" destination="yws-fB-5zt" id="Meq-0g-vVd"/>
                         <segue destination="5vG-Hj-Aum" kind="presentation" identifier="Signout" modalPresentationStyle="fullScreen" id="M5A-Nh-EQy"/>
                         <segue destination="Ith-np-pdJ" kind="show" identifier="AnonymousMe" id="oFX-bp-PmF"/>
