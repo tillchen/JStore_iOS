@@ -11,13 +11,15 @@ import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
 
-class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
+class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UISearchBarDelegate {
     
     let TAG = "BuyViewController"
 
     @IBOutlet var mTableView: UITableView!
     @IBOutlet var mFilterTextField: UITextField!
     @IBOutlet var mCategoryTextField: UITextField!
+    @IBOutlet var mSearchBar: UISearchBar!
+    @IBOutlet var mDoneButton: UIButton!
     
     var mPosts: [Post] = []
     var db: Firestore!
@@ -69,9 +71,18 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         mCategoryTextField.inputView = mCategoryPicker
         mFilterTextField.text = mFilters[0] // default
         mCategoryTextField.text = mCategories[0] // default
+        mSearchBar.delegate = self
     }
     
     func initialLoad() {
+        print("\(TAG) initialLoad")
+        if let title = mSearchBar.text {
+            print("\(TAG) initialLoad \(title)")
+            let upperLimit = title + "\u{f8ff}"
+            mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("title", isGreaterThanOrEqualTo: title).whereField("title", isLessThanOrEqualTo: upperLimit).order(by: "title").order(by: "creationDate", descending: true).limit(to: 10)
+            fetchPostsFromDB()
+            return
+        }
         let category = mCategoryTextField.text!
         let filter = mFilterTextField.text!
         if category == mCategories[0] { // all categories
@@ -109,6 +120,12 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if mLastDocumentSnapShot == nil {
             return
         }
+        if let title = mSearchBar.text {
+            let upperLimit = title + "\u{f8ff}"
+            mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("title", isGreaterThanOrEqualTo: title).whereField("title", isLessThanOrEqualTo: upperLimit).order(by: "title").order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            fetchPostsFromDB()
+            return
+        }
         let category = mCategoryTextField.text!
         let filter = mFilterTextField.text!
         if category == mCategories[0] { // all categories
@@ -143,6 +160,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func fetchPostsFromDB() {
+        print("\(TAG) fetchPostsFromDB")
         mQuery.getDocuments() { (snapshot, err) in
             if let err = err {
                 print("\(self.TAG) loadData error: \(err)")
@@ -301,8 +319,34 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func onDoneClicked(_ sender: Any) {
         mFilterTextField.resignFirstResponder()
         mCategoryTextField.resignFirstResponder()
+        mSearchBar.resignFirstResponder()
         mPosts = []
         initialLoad()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("\(TAG) searchBar search")
+        searchBar.resignFirstResponder()
+        mFilterTextField.isHidden = true
+        mCategoryTextField.isHidden = true
+        mDoneButton.isHidden = true
+        mPosts = []
+        initialLoad()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        mFilterTextField.isHidden = false
+        mCategoryTextField.isHidden = false
+        mDoneButton.isHidden = false
+        mPosts = []
+        initialLoad()
+        searchBar.resignFirstResponder()
     }
     
     func showAlert(_ content: String) {

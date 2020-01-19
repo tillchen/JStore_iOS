@@ -113,6 +113,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6Tj-Qa-izg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="nq2-wt-zlM"/>
+                                </connections>
                             </searchBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJi-Cv-INj">
                                 <rect key="frame" x="9" y="146" width="97" height="34"/>
@@ -157,7 +160,9 @@
                     <navigationItem key="navigationItem" title="Buy" id="zkk-5K-OZL"/>
                     <connections>
                         <outlet property="mCategoryTextField" destination="M97-rG-aiQ" id="QZB-s8-zCf"/>
+                        <outlet property="mDoneButton" destination="T6t-RS-yRi" id="bfm-Ef-Vcj"/>
                         <outlet property="mFilterTextField" destination="VJi-Cv-INj" id="tlq-Ps-B6H"/>
+                        <outlet property="mSearchBar" destination="6Tj-Qa-izg" id="VS4-cf-opw"/>
                         <outlet property="mTableView" destination="mea-Pz-m1s" id="MZu-ji-9af"/>
                         <segue destination="Dvg-gE-VDJ" kind="show" identifier="PostDetails" id="0gX-G1-Ycj"/>
                     </connections>
