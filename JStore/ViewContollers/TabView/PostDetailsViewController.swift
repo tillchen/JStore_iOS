@@ -18,7 +18,7 @@ class PostDetailsViewController: UIViewController {
     
     var db: Firestore!
     var mPost: Post!
-    var mJStoreUser: JStoreUser!
+    var mJStoreUser: JStoreUser?
     var mUser: User!
 
     @IBOutlet var mImageView: UIImageView!
@@ -45,7 +45,9 @@ class PostDetailsViewController: UIViewController {
         
         setData()
         
-        getJStoreUserFromDB()
+        if !Auth.auth().currentUser!.isAnonymous {
+            getJStoreUserFromDB()
+        }
         
     }
     
@@ -164,7 +166,7 @@ class PostDetailsViewController: UIViewController {
         var message = "Dear " + mPost.ownerName + ",\n\n Hi! I'm contacting you by clicking on the" +
         " Email button of JStore. I'm interested in the following item:\nhttps://jstore.xyz/posts/" +
         mPost.postId + "\n\nSincerely,\n\n"
-        message += (mUser.isAnonymous ? "" : mJStoreUser.fullName)
+        message += (mUser.isAnonymous ? "" : mJStoreUser?.fullName ?? "")
         let uri = "ms-outlook://compose?to=" + mPost.ownerId + "&subject=" + "[JStore] " + mPost.title + "&body=" + message
         if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             if UIApplication.shared.canOpenURL(url) {
@@ -178,7 +180,7 @@ class PostDetailsViewController: UIViewController {
     
     func sendWhatsAppMessage() {
         let message = "[JStore] " + mPost.title + "\n\nHi! I'm contacting you by clicking on the " +
-        "WhatsApp button of JStore. My name is " + (mUser.isAnonymous ? "" : mJStoreUser.fullName) +
+        "WhatsApp button of JStore. My name is " + (mUser.isAnonymous ? "" : mJStoreUser?.fullName ?? "") +
         " and I'm interested in the following item:\nhttps://jstore.xyz/posts/" + mPost.postId
         let uri = "https://wa.me/" + mPost.phoneNumber + "?text=" + message
         if let url = URL(string: uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {

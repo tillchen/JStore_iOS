@@ -58,6 +58,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         if Auth.auth().currentUser!.isAnonymous {
             performSegue(withIdentifier: "AnonymousSell", sender: nil)
+            return
         }
         initUI()
         getJStoreUserFromDB()

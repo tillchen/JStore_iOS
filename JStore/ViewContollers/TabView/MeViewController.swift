@@ -39,6 +39,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         if Auth.auth().currentUser!.isAnonymous {
             performSegue(withIdentifier: "AnonymousMe", sender: nil)
+            return
         }
         mTableView.dataSource = self
         mTableView.delegate = self
