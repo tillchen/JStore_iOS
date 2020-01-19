@@ -11,7 +11,7 @@ import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
 
-class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     let TAG = "MyPostsViewController"
 
@@ -20,7 +20,7 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var db: Firestore!
     var mQuery: Query!
     var mLastDocumentSnapShot: DocumentSnapshot!
-    var mFetchMore = true
+    var isMoreDataLoading : Bool = false
     var mPost: Post!
     var mSold: Bool = false
     var mOwnerID: String = ""
@@ -33,7 +33,7 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         mTableView.dataSource = self
         mTableView.delegate = self
         
-        loadData()
+        initialLoad()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
@@ -46,40 +46,37 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         navigationController?.navigationBar.isHidden = false
     }
     
-    func loadData() {
-        if !mFetchMore {
-            return
-        }
-        if mPosts.isEmpty { // initial load
-            print("\(TAG) loadData initial load")
-            if mSold {
-                mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: true).order(by: "creationDate", descending: true).limit(to: 10)
-            }
-            else {
-                mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).limit(to: 10)
-            }
+    func initialLoad() {
+        if mSold {
+            mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: true).order(by: "creationDate", descending: true).limit(to: 10)
         }
         else {
-            print("\(TAG) loadData non-initial load")
-            if mSold {
-                mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: true).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
-            }
-            else {
-                mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
-            }
+            mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).limit(to: 10)
         }
-        
+        fetchPostsFromDB()
+    }
+    
+    func loadMoreData() {
+        if mSold {
+            mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: true).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+        }
+        else {
+            mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+        }
+        fetchPostsFromDB()
+    }
+    
+    func fetchPostsFromDB() {
         mQuery.getDocuments() { (snapshot, err) in
             if let err = err {
                 print("\(self.TAG) loadData error: \(err)")
                 self.showAlert("Sorry. Something went wrong. Please try again.")
             }
             else if snapshot!.isEmpty {
-                self.mFetchMore = false
+                self.isMoreDataLoading = false
                 return
             }
             else {
-                self.mFetchMore = true
                 for document in snapshot!.documents {
                     let result = Result {
                         try document.data(as: Post.self)
@@ -96,13 +93,12 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
                         print("\(self.TAG) loadData error: \(error)")
                     }
                 }
+                self.isMoreDataLoading = false
                 self.mTableView.reloadData()
                 self.mLastDocumentSnapShot = snapshot!.documents.last
             }
         }
     }
-
-    
     // dataSource methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,9 +124,15 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         performSegue(withIdentifier: "MyPostDetails", sender: nil)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == mPosts.count-1 { // load more data
-            loadData()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMoreDataLoading {
+            let scrollViewContentHeight = mTableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - mTableView.bounds.size.height
+            if scrollView.contentOffset.y > scrollOffsetThreshold && mTableView.isDragging {
+                isMoreDataLoading = true
+                loadMoreData()
+            }
+            
         }
     }
     
@@ -145,6 +147,7 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! PostDetailsViewController
         viewController.mPost = mPost
+        viewController.mFromBuyViewController = false
     }
     
     @IBAction func unwindToMyPosts(segue: UIStoryboardSegue) {

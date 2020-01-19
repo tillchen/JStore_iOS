@@ -11,7 +11,7 @@ import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
 
-class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     let TAG = "BuyViewController"
 
@@ -21,7 +21,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var db: Firestore!
     var mQuery: Query!
     var mLastDocumentSnapShot: DocumentSnapshot!
-    var mFetchMore = true
+    var isMoreDataLoading = false
     var mPost: Post!
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         NotificationCenter.default.addObserver(self, selector: #selector(receivedPostID), name: Notification.Name("PostIDReceived"), object: nil)
         
-        loadData()
+        initialLoad()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
@@ -44,6 +44,50 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    func initialLoad() {
+        mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).limit(to: 10)
+        fetchPostsFromDB()
+    }
+    
+    func loadMoreData() {
+        mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+        fetchPostsFromDB()
+    }
+    
+    func fetchPostsFromDB() {
+        mQuery.getDocuments() { (snapshot, err) in
+            if let err = err {
+                print("\(self.TAG) loadData error: \(err)")
+                self.showAlert("Sorry. Something went wrong. Please try again.")
+            }
+            else if snapshot!.isEmpty {
+                self.isMoreDataLoading = false
+                return
+            }
+            else {
+                for document in snapshot!.documents {
+                    let result = Result {
+                        try document.data(as: Post.self)
+                    }
+                    switch result {
+                    case .success(let post):
+                        if let post = post {
+                            self.mPosts.append(post)
+                        }
+                        else {
+                            print("\(self.TAG) loadData document doesn't exist")
+                        }
+                    case .failure(let error):
+                        print("\(self.TAG) loadData error: \(error)")
+                    }
+                }
+                self.isMoreDataLoading = false
+                self.mTableView.reloadData()
+                self.mLastDocumentSnapShot = snapshot!.documents.last
+            }
+        }
     }
     
     @objc func receivedPostID() {
@@ -67,52 +111,6 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             case .failure(let error):
                 print("\(self.TAG) error decoding post \(error)")
                 self.showAlert("Sorry. A critical error occured. Please try again or restart the app.")
-            }
-        }
-    }
-    
-    func loadData() {
-        if !mFetchMore {
-            return
-        }
-        if mPosts.isEmpty { // initial load
-            print("\(TAG) loadData initial load")
-            mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).limit(to: 10)
-        }
-        else {
-            print("\(TAG) loadData non-initial load")
-            mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
-        }
-        
-        mQuery.getDocuments() { (snapshot, err) in
-            if let err = err {
-                print("\(self.TAG) loadData error: \(err)")
-                self.showAlert("Sorry. Something went wrong. Please try again.")
-            }
-            else if snapshot!.isEmpty {
-                self.mFetchMore = false
-                return
-            }
-            else {
-                self.mFetchMore = true
-                for document in snapshot!.documents {
-                    let result = Result {
-                        try document.data(as: Post.self)
-                    }
-                    switch result {
-                    case .success(let post):
-                        if let post = post {
-                            self.mPosts.append(post)
-                        }
-                        else {
-                            print("\(self.TAG) loadData document doesn't exist")
-                        }
-                    case .failure(let error):
-                        print("\(self.TAG) loadData error: \(error)")
-                    }
-                }
-                self.mTableView.reloadData()
-                self.mLastDocumentSnapShot = snapshot!.documents.last
             }
         }
     }
@@ -142,9 +140,15 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         performSegue(withIdentifier: "PostDetails", sender: nil)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == mPosts.count-1 { // load more data
-            loadData()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMoreDataLoading {
+            let scrollViewContentHeight = mTableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - mTableView.bounds.size.height
+            if scrollView.contentOffset.y > scrollOffsetThreshold && mTableView.isDragging {
+                isMoreDataLoading = true
+                loadMoreData()
+            }
+            
         }
     }
     
@@ -159,6 +163,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! PostDetailsViewController
         viewController.mPost = mPost
+        viewController.mFromBuyViewController = true
     }
     
     @IBAction func unwindToBuy(segue: UIStoryboardSegue) {

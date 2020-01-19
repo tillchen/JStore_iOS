@@ -20,6 +20,7 @@ class PostDetailsViewController: UIViewController {
     var mPost: Post!
     var mJStoreUser: JStoreUser?
     var mUser: User!
+    var mFromBuyViewController: Bool = true
 
     @IBOutlet var mImageView: UIImageView!
     @IBOutlet var mTitleLabel: UILabel!
@@ -87,7 +88,7 @@ class PostDetailsViewController: UIViewController {
                 mSendEmailButton.isEnabled = false
             }
             else {
-                mSendEmailButton.isEnabled = false
+                mSendEmailButton.isEnabled = true
             }
         }
         else {
@@ -189,6 +190,7 @@ class PostDetailsViewController: UIViewController {
     }
     
     func markAsSold() {
+        print("\(TAG) markAsSold")
         let alert = UIAlertController(title: "Mark As Sold", message: "Are you sure you want to mark this item as sold?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { _ in
             return
@@ -204,7 +206,7 @@ class PostDetailsViewController: UIViewController {
                     self.showAlert("Sorry. Please try again.")
                 }
                 else {
-                    if (self.presentingViewController as? BuyViewController) != nil {
+                    if self.mFromBuyViewController {
                         self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
                     }
                     else {
@@ -235,7 +237,12 @@ class PostDetailsViewController: UIViewController {
                             self.showAlert("Sorry. Please try again.")
                         }
                         else {
-                            self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
+                            if self.mFromBuyViewController {
+                                self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
+                            }
+                            else {
+                                self.performSegue(withIdentifier: "unwindToMyPosts", sender: nil)
+                            }
                         }
                     }
                 }
