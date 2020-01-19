@@ -11,9 +11,9 @@ import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
 
-class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource { // TODO: Add scroll to refresh
+class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let TAG = "MyPostViewController"
+    let TAG = "MyPostsViewController"
 
     @IBOutlet var mTableView: UITableView!
     var mPosts: [Post] = []
@@ -34,6 +34,10 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         mTableView.delegate = self
         
         loadData()
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
+        mTableView.insertSubview(refreshControl, at: 0)
         
     }
     
@@ -128,6 +132,14 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.row == mPosts.count-1 { // load more data
             loadData()
         }
+    }
+    
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) { // TODO
+        /*
+        mPosts = []
+        loadData()
+        */
+        refreshControl.endRefreshing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

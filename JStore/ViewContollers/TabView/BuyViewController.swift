@@ -11,7 +11,7 @@ import Firebase
 import FirebaseUI
 import FirebaseFirestoreSwift
 
-class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource { // TODO: Add scroll to refresh
+class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let TAG = "BuyViewController"
 
@@ -36,6 +36,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         loadData()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
+        mTableView.insertSubview(refreshControl, at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,7 +116,6 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
     }
-
     
     // dataSource methods
     
@@ -144,6 +146,14 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if indexPath.row == mPosts.count-1 { // load more data
             loadData()
         }
+    }
+    
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) { // TODO
+        /*
+        mPosts = []
+        loadData()
+        */
+        refreshControl.endRefreshing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
