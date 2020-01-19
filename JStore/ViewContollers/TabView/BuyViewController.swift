@@ -72,7 +72,36 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func initialLoad() {
-        mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).limit(to: 10)
+        let category = mCategoryTextField.text!
+        let filter = mFilterTextField.text!
+        if category == mCategories[0] { // all categories
+            if filter == mFilters[0] { // Date Down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).limit(to: 10)
+            }
+            else if filter == mFilters[1] { // Date Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: false).limit(to: 10)
+            }
+            else if filter == mFilters[2] { // Price Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "price", descending: false).limit(to: 10)
+            }
+            else { // price down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "price", descending: true).limit(to: 10)
+            }
+        }
+        else { // a particular category
+            if filter == mFilters[0] { // Date Down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "creationDate", descending: true).limit(to: 10)
+            }
+            else if filter == mFilters[1] { // Date Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "creationDate", descending: false).limit(to: 10)
+            }
+            else if filter == mFilters[2] { // Price Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "price", descending: false).limit(to: 10)
+            }
+            else { // price down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "price", descending: true).limit(to: 10)
+            }
+        }
         fetchPostsFromDB()
     }
     
@@ -80,7 +109,36 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if mLastDocumentSnapShot == nil {
             return
         }
-        mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+        let category = mCategoryTextField.text!
+        let filter = mFilterTextField.text!
+        if category == mCategories[0] { // all categories
+            if filter == mFilters[0] { // Date Down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+            else if filter == mFilters[1] { // Date Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: false).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+            else if filter == mFilters[2] { // Price Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "price", descending: false).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+            else { // price down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "price", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+        }
+        else { // a particular category
+            if filter == mFilters[0] { // Date Down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+            else if filter == mFilters[1] { // Date Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "creationDate", descending: false).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+            else if filter == mFilters[2] { // Price Up
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "price", descending: false).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+            else { // price down
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("category", isEqualTo: category).order(by: "price", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+            }
+        }
         fetchPostsFromDB()
     }
     
@@ -243,6 +301,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func onDoneClicked(_ sender: Any) {
         mFilterTextField.resignFirstResponder()
         mCategoryTextField.resignFirstResponder()
+        mPosts = []
+        initialLoad()
     }
     
     func showAlert(_ content: String) {
