@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestoreSwift
 
-class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let TAG = "SellViewController"
     let CATEGORY_PICKER = 0
