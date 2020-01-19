@@ -57,6 +57,9 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func loadMoreData() {
+        if mLastDocumentSnapShot == nil {
+            return
+        }
         if mSold {
             mQuery = db.collection("posts").whereField("ownerId", isEqualTo: mOwnerID).whereField("sold", isEqualTo: true).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
         }
@@ -107,6 +110,9 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mTableView.dequeueReusableCell(withIdentifier: "com.tilchen.MyPostTableViewCell", for: indexPath) as! PostTableViewCell
+        if mPosts.count == 0 {
+            return cell
+        }
         let post = mPosts[indexPath.row]
         cell.mImage.sd_setImage(with: Storage.storage().reference(forURL: post.imageUrl))
         cell.mTitle.text = post.title
@@ -136,11 +142,9 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) { // TODO
-        /*
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
         mPosts = []
-        loadData()
-        */
+        initialLoad()
         refreshControl.endRefreshing()
     }
     

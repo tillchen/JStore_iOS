@@ -52,6 +52,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func loadMoreData() {
+        if mLastDocumentSnapShot == nil {
+            return
+        }
         mQuery = db.collection("posts").whereField("sold", isEqualTo: false).order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
         fetchPostsFromDB()
     }
@@ -123,6 +126,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mTableView.dequeueReusableCell(withIdentifier: "com.tilchen.PostTableViewCell", for: indexPath) as! PostTableViewCell
+        if mPosts.count == 0 {
+            return cell
+        }
         let post = mPosts[indexPath.row]
         cell.mImage.sd_setImage(with: Storage.storage().reference(forURL: post.imageUrl))
         cell.mTitle.text = post.title
@@ -152,11 +158,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) { // TODO
-        /*
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
         mPosts = []
-        loadData()
-        */
+        initialLoad()
         refreshControl.endRefreshing()
     }
     
