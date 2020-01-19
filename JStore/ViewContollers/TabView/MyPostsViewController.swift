@@ -39,6 +39,8 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
         mTableView.insertSubview(refreshControl, at: 0)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Notification.Name("RefreshMyPosts"), object: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -126,6 +128,9 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if mPosts.count == 0 {
+            return
+        }
         mPost = mPosts[indexPath.row]
         performSegue(withIdentifier: "MyPostDetails", sender: nil)
     }
@@ -146,6 +151,11 @@ class MyPostsViewController: UIViewController, UITableViewDelegate, UITableViewD
         mPosts = []
         initialLoad()
         refreshControl.endRefreshing()
+    }
+    
+    @objc func refresh() {
+        mPosts = []
+        initialLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

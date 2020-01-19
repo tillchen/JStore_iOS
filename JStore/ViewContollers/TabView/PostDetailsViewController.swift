@@ -207,9 +207,11 @@ class PostDetailsViewController: UIViewController {
                 }
                 else {
                     if self.mFromBuyViewController {
+                        NotificationCenter.default.post(name: Notification.Name("RefreshBuy"), object: nil)
                         self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
                     }
                     else {
+                        NotificationCenter.default.post(name: Notification.Name("RefreshMyPosts"), object: nil)
                         self.performSegue(withIdentifier: "unwindToMyPosts", sender: nil)
                     }
                 }
@@ -238,9 +240,11 @@ class PostDetailsViewController: UIViewController {
                         }
                         else {
                             if self.mFromBuyViewController {
+                                NotificationCenter.default.post(name: Notification.Name("RefreshBuy"), object: nil)
                                 self.performSegue(withIdentifier: "unwindToBuy", sender: nil)
                             }
                             else {
+                                NotificationCenter.default.post(name: Notification.Name("RefreshMyPosts"), object: nil)
                                 self.performSegue(withIdentifier: "unwindToMyPosts", sender: nil)
                             }
                         }

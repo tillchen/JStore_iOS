@@ -33,6 +33,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         mTableView.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(receivedPostID), name: Notification.Name("PostIDReceived"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Notification.Name("RefreshBuy"), object: nil)
         
         initialLoad()
         
@@ -142,6 +143,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if mPosts.count == 0 {
+            return
+        }
         mPost = mPosts[indexPath.row]
         performSegue(withIdentifier: "PostDetails", sender: nil)
     }
@@ -162,6 +166,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         mPosts = []
         initialLoad()
         refreshControl.endRefreshing()
+    }
+    
+    @objc func refresh() {
+        mPosts = []
+        initialLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
