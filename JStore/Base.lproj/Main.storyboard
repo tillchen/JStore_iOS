@@ -103,7 +103,7 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M97-rG-aiQ">
-                                <rect key="frame" x="114" y="146" width="293" height="34"/>
+                                <rect key="frame" x="114" y="146" width="234" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -122,19 +122,32 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="cUM-su-4Pg"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6t-RS-yRi">
+                                <rect key="frame" x="355" y="148" width="53" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDoneClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="PD5-u0-f7D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="M97-rG-aiQ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="58" id="1tY-hp-IQz"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="M97-rG-aiQ" secondAttribute="trailing" constant="66" id="4PH-VH-lB3"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="VJi-Cv-INj" secondAttribute="trailing" constant="308" id="4YV-tO-xkf"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="M97-rG-aiQ" secondAttribute="trailing" constant="7" id="6Dd-dM-f50"/>
                             <constraint firstItem="VJi-Cv-INj" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="9" id="FHS-b7-chP"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="T6t-RS-yRi" secondAttribute="trailing" constant="6" id="NvD-Yk-oSn"/>
+                            <constraint firstItem="T6t-RS-yRi" firstAttribute="top" secondItem="6Tj-Qa-izg" secondAttribute="bottom" constant="4" id="TjB-57-FcL"/>
                             <constraint firstItem="M97-rG-aiQ" firstAttribute="leading" secondItem="VJi-Cv-INj" secondAttribute="trailing" constant="8" id="UwV-Xm-JPw"/>
                             <constraint firstItem="VJi-Cv-INj" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="58" id="dj0-sL-uib"/>
                             <constraint firstItem="mea-Pz-m1s" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="dlG-Ov-8a4"/>
                             <constraint firstItem="mea-Pz-m1s" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="gkx-2U-TzW"/>
                             <constraint firstItem="mea-Pz-m1s" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="i5b-py-cUV"/>
                             <constraint firstItem="6Tj-Qa-izg" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="jVa-Kf-X8u"/>
+                            <constraint firstItem="T6t-RS-yRi" firstAttribute="leading" secondItem="M97-rG-aiQ" secondAttribute="trailing" constant="7" id="mQ3-NP-KIv"/>
                             <constraint firstItem="6Tj-Qa-izg" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="sUQ-Hz-CQR"/>
                             <constraint firstItem="mea-Pz-m1s" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="92" id="saL-8j-hJm"/>
                             <constraint firstItem="6Tj-Qa-izg" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="vTi-zE-MMo"/>

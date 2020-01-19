@@ -26,7 +26,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var isMoreDataLoading = false
     var mPost: Post!
     
-    let mCategories = ["Apparel, Shoes & Watches", "Automotive, Motorcycle & Industrial", "Beauty & Health", "Books & Audible", "Electronics & Computers", "Grocery/Food", "Home, Garden, Pets & DIY", "Automotive, Motorcycle & Industrial", "Sports & Outdoors", "Other"]
+    let mCategories = ["All Categories", "Apparel, Shoes & Watches", "Automotive, Motorcycle & Industrial", "Beauty & Health", "Books & Audible", "Electronics & Computers", "Grocery/Food", "Home, Garden, Pets & DIY", "Automotive, Motorcycle & Industrial", "Sports & Outdoors", "Other"]
     let mFilters = ["Date↓", "Date↑", "Price↑", "Price↓"]
     let FILTER_PICKER = 0
     let CATEGORY_PICKER = 1
@@ -240,6 +240,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    @IBAction func onDoneClicked(_ sender: Any) {
+        mFilterTextField.resignFirstResponder()
+        mCategoryTextField.resignFirstResponder()
+    }
+    
     func showAlert(_ content: String) {
         let alertController = UIAlertController(title: "JStore", message:
             content, preferredStyle: .alert)
@@ -248,4 +253,3 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
 }
-
