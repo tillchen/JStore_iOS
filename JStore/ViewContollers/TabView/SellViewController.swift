@@ -289,6 +289,8 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             else {
                 self.showAlert("Posted!")
                 self.clearFields()
+                NotificationCenter.default.post(name: Notification.Name("RefreshBuy"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("RefreshMyPosts"), object: nil)
             }
         }
     }
