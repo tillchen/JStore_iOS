@@ -77,11 +77,12 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func initialLoad() {
         print("\(TAG) initialLoad")
         if let title = mSearchBar.text {
-            print("\(TAG) initialLoad \(title)")
-            let upperLimit = title + "\u{f8ff}"
-            mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("title", isGreaterThanOrEqualTo: title).whereField("title", isLessThanOrEqualTo: upperLimit).order(by: "title").order(by: "creationDate", descending: true).limit(to: 10)
-            fetchPostsFromDB()
-            return
+            if !title.isEmpty {
+                let upperLimit = title + "\u{f8ff}"
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("title", isGreaterThanOrEqualTo: title).whereField("title", isLessThanOrEqualTo: upperLimit).order(by: "title").order(by: "creationDate", descending: true).limit(to: 10)
+                fetchPostsFromDB()
+                return
+            }
         }
         let category = mCategoryTextField.text!
         let filter = mFilterTextField.text!
@@ -121,10 +122,12 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             return
         }
         if let title = mSearchBar.text {
-            let upperLimit = title + "\u{f8ff}"
-            mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("title", isGreaterThanOrEqualTo: title).whereField("title", isLessThanOrEqualTo: upperLimit).order(by: "title").order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
-            fetchPostsFromDB()
-            return
+            if !title.isEmpty {
+                let upperLimit = title + "\u{f8ff}"
+                mQuery = db.collection("posts").whereField("sold", isEqualTo: false).whereField("title", isGreaterThanOrEqualTo: title).whereField("title", isLessThanOrEqualTo: upperLimit).order(by: "title").order(by: "creationDate", descending: true).start(afterDocument: mLastDocumentSnapShot).limit(to: 10)
+                fetchPostsFromDB()
+                return
+            }
         }
         let category = mCategoryTextField.text!
         let filter = mFilterTextField.text!

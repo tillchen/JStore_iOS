@@ -243,7 +243,7 @@ class SellViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         postItem()
     }
     
-    func getAndSetData() { // TODO: Check the length of textFields and textView
+    func getAndSetData() {
         mTitle = mTitleTextField.text!
         mDescription = mDescriptionTextView.text!
         mCategory = mCategoryTextField.text!
