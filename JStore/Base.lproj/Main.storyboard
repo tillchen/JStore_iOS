@@ -711,8 +711,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gj7-dQ-HTT">
-                                <rect key="frame" x="32" y="120" width="351" height="138"/>
+                                <rect key="frame" x="32" y="98" width="351" height="138"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="138" id="XD1-zK-Mjw"/>
+                                </constraints>
                                 <string key="text">It looks like you are an anonymous user. In order to use this section and unlock more functionalities, please go to Me section and sign out. Then sign in again with your email.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -721,9 +724,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="d4j-7v-01N" firstAttribute="bottom" secondItem="gj7-dQ-HTT" secondAttribute="bottom" constant="555" id="Xrj-wp-hbR"/>
                             <constraint firstItem="d4j-7v-01N" firstAttribute="trailing" secondItem="gj7-dQ-HTT" secondAttribute="trailing" constant="31" id="d2D-fR-oe8"/>
-                            <constraint firstItem="gj7-dQ-HTT" firstAttribute="top" secondItem="d4j-7v-01N" secondAttribute="top" constant="32" id="wJX-w4-Jea"/>
+                            <constraint firstItem="gj7-dQ-HTT" firstAttribute="top" secondItem="d4j-7v-01N" secondAttribute="top" constant="10" id="sfz-BD-oxb"/>
                             <constraint firstItem="gj7-dQ-HTT" firstAttribute="leading" secondItem="d4j-7v-01N" secondAttribute="leading" constant="32" id="yIT-eQ-NAa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d4j-7v-01N"/>
