@@ -15,7 +15,9 @@ my friend [Taiyr Begeyev](https://github.com/taiyrbegeyev). The [Android app](ht
 
 ## Current Status
 
-I'm almost finishing the app. And it's under review on App store! Now I'm working on notifications.
+You can get it on App Store!
+
+[<img src="images/App_Store_button.png" alt="App Store button" width="200">](https://apps.apple.com/us/app/jstore/id1492876079)
 
 ## Tech Stack
 
