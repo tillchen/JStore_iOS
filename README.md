@@ -1,10 +1,11 @@
 # JStore_iOS
 
-* [JStore_iOS](#jstoreios)
+* [JStore_iOS](#jstore_ios)
   * [About](#about)
   * [Current Status](#current-status)
   * [Tech Stack](#tech-stack)
   * [Screenshots](#screenshots)
+  * [Storyboard](#storyboard)
   * [Enabled Features](#enabled-features)
   * [Credits](#credits)
 
@@ -30,6 +31,9 @@ You can get it on App Store!
 
 <img src="images/SplashScreen.PNG" alt="splash_screen" width="200"/><img src="images/Login.PNG" alt="login" width="200"/><img src="images/Buy.PNG" alt="buy" width="200"/><img src="images/Sell.PNG" alt="sell" width="200"/><img src="images/Me.PNG" alt="me" width="200"/>
 
+## Storyboard
+
+![storyboard](/images/JStore_iOS_storyboard.png)
 
 ## Enabled Features
 
