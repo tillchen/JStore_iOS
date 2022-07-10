@@ -11,8 +11,8 @@
 
 ## About
 
-The iOS app for JStore: A Marketplace for Jacobs University Bremen. The [Web version](jstore.xyz) is also developed by
-my friend [Taiyr Begeyev](https://github.com/taiyrbegeyev). The [Android app](https://github.com/tillchen/JStore_iOS) (made by me) is already available on Google Play!
+The iOS app for JStore: A Marketplace for Jacobs University Bremen. The [Web version](jstore.xyz) is developed by
+my friend [Taiyr Begeyev](https://github.com/taiyrbegeyev). The [Android app](https://github.com/tillchen/JStore_iOS) is also finished.
 
 ## Current Status
 
